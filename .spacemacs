@@ -328,11 +328,11 @@ you should place your code here."
 
   (spaceline-toggle-minor-modes-off)
 
-  (setq make-backup-files nil)
+  (setq make-backup-files t)
   (setq create-lockfiles nil)
+  (setq auto-save-default nil)
 
   ;; auto-save
-  (setq auto-save-default t)
   (setq auto-save-timeout 1)
 
   (keyboard-translate ?\C-h ?\C-?)
