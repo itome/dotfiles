@@ -326,9 +326,9 @@ you should place your code here."
 
   (setq make-backup-files nil)
   (setq create-lockfiles nil)
+  (setq auto-save-default nil)
 
   ;; auto-save
-  (setq auto-save-default t)
   (setq auto-save-timeout 1)
 
   (keyboard-translate ?\C-h ?\C-?)
