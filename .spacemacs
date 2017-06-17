@@ -48,7 +48,10 @@ values."
             shell-default-term-shell "/usr/bin/fish"
             shell-default-position 'bottom)
      syntax-checking
-     version-control
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter+
+                      version-control-diff-side 'left
+                      version-control-global-margin t)
 
      python
      common-lisp
@@ -320,7 +323,7 @@ you should place your code here."
 
   (spaceline-toggle-minor-modes-off)
 
-  (setq make-backup-files t)
+  (setq make-backup-files nil)
   (setq create-lockfiles nil)
 
   ;; auto-save
@@ -328,6 +331,13 @@ you should place your code here."
   (setq auto-save-timeout 1)
 
   (keyboard-translate ?\C-h ?\C-?)
+
+  ;; git-gutter+ setting
+  ;; set space for sign and change background color
+  ;; see also custom-set-face
+  (setq git-gutter+-added-sign " ")
+  (setq git-gutter+-modified-sign " ")
+  (setq git-gutter+-deleted-sign " ")
 
   )
 
@@ -355,4 +365,9 @@ you should place your code here."
  '(company-tooltip-annotation-selection ((t (:foreground "white" :background "steelblue"))))
  '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#3E4451"))))
  '(company-tooltip-common-selection ((t (:foreground "white" :background "steelblue"))))
- '(company-tooltip-selection ((t (:foreground "black" :background "steelblue")))))
+ '(company-tooltip-selection ((t (:foreground "black" :background "steelblue"))))
+
+ '(git-gutter+-added ((t (:background "green" :foreground "green"))))
+ '(git-gutter+-deleted ((t (:background "red" :foreground "red"))))
+ '(git-gutter+-modified ((t (:background "magenta" :foreground "magenta"))))
+ )
