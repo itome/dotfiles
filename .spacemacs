@@ -45,7 +45,7 @@ values."
      markdown
      org
      (shell :variables
-            shell-default-height 30
+            shell-default-height 45
             shell-default-term-shell "/usr/bin/fish"
             shell-default-position 'bottom)
      syntax-checking
