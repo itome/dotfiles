@@ -45,6 +45,7 @@ values."
      org
      (shell :variables
             shell-default-height 30
+            shell-default-term-shell "/usr/bin/fish"
             shell-default-position 'bottom)
      syntax-checking
      version-control
