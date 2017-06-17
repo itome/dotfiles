@@ -7,7 +7,11 @@ function fish_title
   true
 end
 
-# incremental search with peco and z
+function cd
+  builtin cd $argv
+  ls -a
+end
+
 function peco_z
   set -l query (commandline)
 
@@ -23,6 +27,11 @@ function peco_z
   end
 end
 
+function peco
+  command peco --layout=bottom-up $argv
+end
+
 function fish_user_key_bindings
-  bind \x1b peco_z # bind to C-[
+  bind \cx\cf peco_z # Ctrl-[にバインドする
+  bind \cr 'peco_select_history (commandline -b)'
 end
