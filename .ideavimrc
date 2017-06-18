@@ -20,3 +20,5 @@ noremap <Space>ww :action NextSplitter<CR>
 noremap <Space>w/ :action SplitVertically<CR>
 noremap <Space><f1> :action ToggleFullScreen<CR>
 noremap <Space>; :action ToggleLineBreakpoint<CR>
+noremap <Space>0 :action ActivateProjectToolWindow<CR>
+noremap <Space>g :action Generate<CR>
