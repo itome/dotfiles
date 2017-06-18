@@ -333,7 +333,6 @@ you should place your code here."
   (setq create-lockfiles nil)
 
   ;; auto-save
-  (setq auto-save-default t)
   (setq auto-save-timeout 1)
 
   (keyboard-translate ?\C-h ?\C-?)
