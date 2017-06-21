@@ -6,6 +6,11 @@ function fish_title
   true
 end
 
+# emacs ansi-term support
+if test -n "$EMACS"
+  set -x TERM eterm-color
+end
+
 # hit ls whenever cd command hitted
 function cd
   builtin cd $argv
