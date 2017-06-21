@@ -11,12 +11,6 @@ if test -n "$EMACS"
   set -x TERM eterm-color
 end
 
-# hit ls whenever cd command hitted
-function cd
-  builtin cd $argv
-  ls -a
-end
-
 # make peco bottom up
 function peco
   command peco --layout=bottom-up $argv
