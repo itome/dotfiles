@@ -328,6 +328,7 @@ you should place your code here."
   (setq-default truncate-partial-width-windows t)
 
   (spaceline-toggle-minor-modes-off)
+  (spacemacs/toggle-vi-tilde-fringe-off)
 
   (setq make-backup-files nil)
   (setq create-lockfiles nil)
