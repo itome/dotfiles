@@ -21,3 +21,5 @@ function fish_user_key_bindings
   bind \cx\cf peco_z
   bind \cr 'peco_select_history (commandline -b)'
 end
+
+alias weather="wget http://wttr.in -O -"

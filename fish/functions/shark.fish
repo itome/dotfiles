@@ -1,0 +1,1 @@
+/home/takeshi/.config/fisherman/shark/functions/shark.fish
