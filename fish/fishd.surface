@@ -32,5 +32,5 @@ SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow
 SET fish_pager_color_prefix:cyan
 SET fish_pager_color_progress:cyan
-SET fisher_active_prompt:eclm
-SET fisher_dependency_count:peco\x1ez\x1eeclm
+SET fisher_active_prompt:chain
+SET fisher_dependency_count:peco\x1ez\x1echain
