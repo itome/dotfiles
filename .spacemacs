@@ -47,7 +47,7 @@ values."
      org
      (shell :variables
             shell-default-term-shell "/usr/bin/fish"
-            shell-default-shell 'ansi-term
+            shell-default-shell 'term
             shell-default-full-span nil
             shell-default-height 45
             shell-default-position 'bottom)
@@ -326,9 +326,9 @@ you should place your code here."
 
   (load-theme 'atom-one-dark t)
 
-  ;;ansi-term support for fish shell
+  ;; ansi-term support for fish shell
   (add-hook 'term-mode-hook 'toggle-truncate-lines)
-  ;;pop shell by C-'
+  ;; pop shell by C-'
   (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
 
   (setq-default truncate-lines t)
