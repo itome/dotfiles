@@ -326,8 +326,6 @@ you should place your code here."
 
   (load-theme 'atom-one-dark t)
 
-  ;; ansi-term support for fish shell
-  (add-hook 'term-mode-hook 'toggle-truncate-lines)
   ;; pop shell by C-'
   (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
 
