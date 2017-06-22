@@ -361,6 +361,7 @@ you should place your code here."
 
   ;; neotree setting
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -379,6 +380,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
+ ;; company-mode color setting
  '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
  '(company-scrollbar-bg ((t (:background "gray40"))))
  '(company-scrollbar-fg ((t (:background "white"))))
@@ -388,6 +391,14 @@ you should place your code here."
  '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#3E4451"))))
  '(company-tooltip-common-selection ((t (:foreground "white" :background "steelblue"))))
  '(company-tooltip-selection ((t (:foreground "black" :background "steelblue"))))
+
+ ;; git-gutter+ color setting
  '(git-gutter+-added ((t (:foreground "green" :background "green"))))
  '(git-gutter+-deleted ((t (:foreground "red" :background "red"))))
- '(git-gutter+-modified ((t (:foreground "magenta" :background "magenta")))))
+ '(git-gutter+-modified ((t (:foreground "magenta" :background "magenta"))))
+
+ ;; flycheck color setting
+ '(flycheck-error ((t (:foreground "red" :background nil))))
+ '(flycheck-info ((t (:foreground "blue" :background nil))))
+ '(flycheck-warning ((t (:foreground "yellow" :background nil))))
+ )
