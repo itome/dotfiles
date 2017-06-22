@@ -376,7 +376,6 @@ you should place your code here."
 
   ;; emacs-lisp
   (require 'lispxmp)
-  (define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
 
   )
 
