@@ -34,7 +34,9 @@ values."
      ruby
      shell-scripts
      vimscript
-     python
+     (python :variables
+             python-test-runner '(pytest nose)
+             python-enable-yapf-format-on-save t)
      common-lisp
      emacs-lisp
 
