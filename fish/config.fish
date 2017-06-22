@@ -1,3 +1,6 @@
+# environment path
+set -U fish_user_paths /home/takeshi/ProgramFiles/anaconda3/bin $fish_user_paths
+
 # remove greeting message
 set fish_greeting ""
 
