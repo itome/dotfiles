@@ -359,9 +359,8 @@ you should place your code here."
   (setq git-gutter+-modified-sign " ")
   (setq git-gutter+-deleted-sign " ")
 
-  ;;neotree setting
+  ;; neotree setting
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -390,5 +389,5 @@ you should place your code here."
  '(company-tooltip-common-selection ((t (:foreground "white" :background "steelblue"))))
  '(company-tooltip-selection ((t (:foreground "black" :background "steelblue"))))
  '(git-gutter+-added ((t (:foreground "green" :background "green"))))
- '(git-gutter+-deleted ((t (:background "red" :background "red"))))
- '(git-gutter+-modified ((t (:background "magenta" :background "magenta")))))
+ '(git-gutter+-deleted ((t (:foreground "red" :background "red"))))
+ '(git-gutter+-modified ((t (:foreground "magenta" :background "magenta")))))
