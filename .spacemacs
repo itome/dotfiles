@@ -35,6 +35,8 @@ values."
      shell-scripts
      vimscript
      python
+     (python :variables
+             python-enable-yapf-format-on-save nil)
      common-lisp
      emacs-lisp
 
