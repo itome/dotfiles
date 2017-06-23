@@ -34,8 +34,7 @@ values."
      ruby
      shell-scripts
      vimscript
-     (python :variables
-             python-enable-yapf-format-on-save t)
+     python
      common-lisp
      emacs-lisp
 
