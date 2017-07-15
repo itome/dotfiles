@@ -1,1 +1,1 @@
-/home/takeshi/.config/fisherman/chain/fish_prompt.fish
+/home/takeshi/.config/fisherman/eclm/fish_prompt.fish
