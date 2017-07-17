@@ -116,3 +116,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/takeshi/anaconda3/bin:$PATH"

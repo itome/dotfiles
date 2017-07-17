@@ -14,7 +14,7 @@ noremap <Space>p :action ParameterInfo<CR>
 noremap <Space><f10> :action Run<CR>
 noremap <Space><f9> :action Debug<CR>
 noremap <Space>m :action Move<CR>
-noremap <Space>f :action Macro.ReformatCodeAndOptimizeImportOnSave<CR>
+noremap <Space>f :action Macro.ReformatCodeAndOptimizeImport<CR>
 noremap <Space>b :action Back<CR>
 noremap <Space>ww :action NextSplitter<CR>
 noremap <Space>w/ :action SplitVertically<CR>

@@ -4,6 +4,7 @@ ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/fish ~/.config/
 ln -sf ~/dotfiles/.bashrc ~/.bashrc
 ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
+ln -sf ~/dotfiles/.jsbeautifyrc ~/.jsbeautifyrc
 
 ## to support fish shell in emacs
 tic -o ~/.terminfo $TERMINFO/e/eterm-color.ti
