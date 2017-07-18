@@ -1,0 +1,13 @@
+{
+  "libs": [
+    "jquery",
+    "react",
+  ],
+  "plugins": {
+    "requirejs": {},
+    "node": {},
+    "modules": {},
+    "es_modules": {}
+  },
+  "ecmaVersion": 6
+}
