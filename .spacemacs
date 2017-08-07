@@ -369,13 +369,13 @@ you should place your code here."
   (defun smart-backspace ()
     (interactive)
     (let* ((current (save-excursion
-                  (point)))
+                      (point)))
            (beginning (save-excursion
                         (beginning-of-line)
                         (point))))
       (if (string-match "^[ \t]*$" (buffer-substring beginning current))
           (progn
-            (beginning-of-line)
+            (kill-line 0)
             (delete-backward-char 1)
             (indent-for-tab-command))
         (delete-backward-char 1))))
