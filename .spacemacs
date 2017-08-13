@@ -64,8 +64,8 @@ values."
                      enable-flyspell-auto-completion t)
      (version-control :variables
                       version-control-diff-tool 'git-gutter+
-                      version-control-diff-side 'left
-                      version-control-global-margin t)
+                      version-control-global-margin t
+                      version-control-diff-side 'left)
 
      )
    ;; List of additional packages that will be installed without being
@@ -159,9 +159,9 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 22
+                               :size 21
                                :weight regular
-                               :width normal
+                               :width regular
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -224,7 +224,7 @@ values."
    ;; `left', or `right'. (default 'bottom)
    dotspacemacs-helm-position 'bottom
    ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
-   ;; in all non-asynchronous sources. If set to `source', preserve individual
+
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
    dotspacemacs-helm-use-fuzzy 'always
@@ -284,7 +284,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -343,6 +343,9 @@ you should place your code here."
   ;; title bar
   (setq frame-title-format "spacemacs")
 
+  ;; line spacing
+  (setq-default line-spacing 6)
+
   ;; startup with fullscreen
   (setq dotspacemacs-fullscreen-at-startup t)
 
@@ -378,16 +381,17 @@ you should place your code here."
             (delete-backward-char 1)
             (indent-for-tab-command))
         (delete-backward-char 1))))
-  (define-key evil-insert-state-map (kbd "<backspace>") 'smart-backspace)
-  (define-key key-translation-map (kbd "C-h") (kbd "<backspace>"))
+  (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
+  (define-key key-translation-map [?\C-h] [?\C-?])
 
   ;;
   ;; package setting
   ;;
 
-  ;; git-gutter+ setting
-  ;; set space for sign and change background color
-  ;; see also custom-set-face
+  ;; subtle diff indicators in the fringe
+  (setq-default fringes-outside-margins t)
+  (setq linum-format " %4d ")
+  ;; see also custom face variables
   (setq git-gutter+-added-sign " ")
   (setq git-gutter+-modified-sign " ")
   (setq git-gutter+-deleted-sign " ")
@@ -444,7 +448,6 @@ you should place your code here."
   ;; language settings
   ;;
 
-  ;; emacs-lisp
   (require 'lispxmp)
 
   ;; javascript
@@ -488,6 +491,6 @@ you should place your code here."
  '(flycheck-error ((t (:foreground "red" :background nil))))
  '(flycheck-info ((t (:foreground "skyblue" :background nil))))
  '(flycheck-warning ((t (:foreground "yellow" :background nil))))
- '(git-gutter+-added ((t (:foreground "green" :background "green"))))
- '(git-gutter+-deleted ((t (:foreground "red" :background "red"))))
- '(git-gutter+-modified ((t (:foreground "magenta" :background "magenta")))))
+ '(git-gutter+-added ((t (:foreground "#98C379" :background "#98C379"))))
+ '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
+ '(git-gutter+-deleted ((t (:foreground "#BE5046" :background "#BE5046")))))
