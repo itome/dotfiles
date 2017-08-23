@@ -381,6 +381,7 @@ you should place your code here."
             (delete-backward-char 1)
             (indent-for-tab-command))
         (delete-backward-char 1))))
+
   (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
   (define-key key-translation-map [?\C-h] [?\C-?])
 
@@ -410,11 +411,11 @@ you should place your code here."
 
   ;; neotree setting
   (setq neo-autorefresh t)
+  (setq neo-banner-message nil)
+  (setq neo-show-updir-line nil)
   (doom-themes-neotree-config)
   (setq doom-neotree-file-icons t)
   (setq doom-neotree-line-spacing 4)
-  (setq neo-banner-message nil)
-  (setq neo-show-updir-line nil)
 
   ;; plantuml setting
   (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar")
@@ -505,4 +506,5 @@ you should place your code here."
  '(git-gutter+-added ((t (:foreground "#98C379" :background "#98C379"))))
  '(git-gutter+-deleted ((t (:foreground "#E06C75" :background "#E06C75"))))
  '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
- '(linum-highlight-face ((t (:background "#2F343D")))))
+ '(linum-highlight-face ((t (:background "#2F343D"))))
+ '(doom-neotree-dir-face ((t (:foreground "#61AFEF")))))
