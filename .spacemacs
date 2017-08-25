@@ -345,6 +345,8 @@ you should place your code here."
   ;; title bar
   (setq frame-title-format "spacemacs")
 
+  (setq-default cursor-in-non-selected-windows nil)
+
   ;; line spacing
   (setq-default line-spacing 4)
 
