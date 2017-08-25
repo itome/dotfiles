@@ -172,7 +172,6 @@ values."
    ;; (default "SPC")
    dotspacemacs-emacs-command-key "SPC"
    ;; The key used for Vim Ex commands (default ":")
-   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -356,16 +355,16 @@ you should place your code here."
   (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
 
   ;; not fold in right edge
-  (setq-default truncate-lines t)
-  (setq-default truncate-partial-width-windows t)
+  (setq-default truncate-lines t
+                truncate-partial-width-windows t)
 
   (spaceline-toggle-minor-modes-off)
   (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; don't create backup files
-  (setq make-backup-files nil)
-  (setq create-lockfiles nil)
-  (setq auto-save-default nil)
+  (setq make-backup-files nil
+        create-lockfiles nil
+        auto-save-default nil)
 
   ;; backspace like intellij idea
   (defun smart-backspace ()
@@ -381,7 +380,6 @@ you should place your code here."
             (delete-backward-char 1)
             (indent-for-tab-command))
         (delete-backward-char 1))))
-
   (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
   (define-key key-translation-map [?\C-h] [?\C-?])
 
@@ -410,20 +408,22 @@ you should place your code here."
   (auto-save-buffers-enhanced t)
 
   ;; neotree setting
-  (setq neo-autorefresh t)
-  (setq neo-banner-message nil)
-  (setq neo-show-updir-line nil)
+  (setq neo-banner-message nil
+        neo-show-updir-line nil
+        neo-auto-indent-point nil
+        neo-mode-line-type 'none
+        neo-vc-integration '(face char))
   (doom-themes-neotree-config)
-  (setq doom-neotree-file-icons t)
-  (setq doom-neotree-line-spacing 4)
+  (setq doom-neotree-file-icons t
+        doom-neotree-line-spacing 4)
 
   ;; plantuml setting
-  (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar")
-  (setq plantuml-output-type "png")
+  (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
+        plantuml-output-type "png")
 
   ;; face color for company quick help
-  (setq company-quickhelp-color-background "#3E4451")
-  (setq company-quickhelp-color-foreground "#ABB2BF")
+  (setq company-quickhelp-color-background "#3E4451"
+        company-quickhelp-color-foreground "#ABB2BF")
 
   ;; rainbow-mode setting
   (require 'rainbow-mode)
@@ -458,8 +458,6 @@ you should place your code here."
   ;; language settings
   ;;
 
-  (require 'lispxmp)
-
   ;; javascript
   (setq-default
    ;; js2-mod
@@ -485,7 +483,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (hlinum doom-themes org-category-capture spaceline-all-the-icons all-the-icons-dired color-theme-buffer-local color-theme smart-hungry-delete flyspell-popup quickrun company-quickhelp mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -500,6 +498,7 @@ you should place your code here."
  '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#3E4451"))))
  '(company-tooltip-common-selection ((t (:foreground "white" :background "steelblue"))))
  '(company-tooltip-selection ((t (:foreground "black" :background "steelblue"))))
+ '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
  '(flycheck-error ((t (:foreground "red" :background nil))))
  '(flycheck-info ((t (:foreground "skyblue" :background nil))))
  '(flycheck-warning ((t (:foreground "yellow" :background nil))))
@@ -507,4 +506,6 @@ you should place your code here."
  '(git-gutter+-deleted ((t (:foreground "#E06C75" :background "#E06C75"))))
  '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
  '(linum-highlight-face ((t (:background "#2F343D"))))
- '(doom-neotree-dir-face ((t (:foreground "#61AFEF")))))
+ '(minibuffer-prompt ((t (:foreground "#AAAAAA"))))
+ '(neo-vc-added-face ((t (:foreground "#98C379"))))
+ '(neo-vc-edited-face ((t (:foreground "#D19A66")))))
