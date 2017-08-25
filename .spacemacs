@@ -455,8 +455,6 @@ you should place your code here."
 
   ;; spell checking setting
   (setq-default ispell-program-name "aspell")
-  (eval-after-load "ispell"
-    '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 
   ;; all-the-icons
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
