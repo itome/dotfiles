@@ -221,7 +221,7 @@ values."
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
-   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-no-header t
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
    dotspacemacs-helm-position 'bottom
@@ -244,7 +244,7 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
@@ -254,11 +254,11 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 100
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -350,23 +350,13 @@ you should place your code here."
   ;; line spacing
   (setq-default line-spacing 4)
 
-  ;; load theme
-  (load-theme 'atom-one-dark t)
-  ;; brighten buffers (that represent real files)
-  (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
-  (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
-  (add-hook 'after-revert-hook #'turn-on-solaire-mode)
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
-
-  ;; pop shell by C-'
-  (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
-
   ;; not fold in right edge
   (setq-default truncate-lines t
                 truncate-partial-width-windows t)
 
-  (spaceline-toggle-minor-modes-off)
   (spacemacs/toggle-vi-tilde-fringe-off)
+
+  (global-auto-revert-mode t)
 
   ;; don't create backup files
   (setq make-backup-files nil
@@ -394,6 +384,21 @@ you should place your code here."
   ;; package setting
   ;;
 
+  ;; load theme
+  (load-theme 'atom-one-dark t)
+  ;; brighten buffers (that represent real files)
+  (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+  (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
+  (add-hook 'after-revert-hook #'turn-on-solaire-mode)
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+
+  ;; mode-line setting
+  (spaceline-toggle-minor-modes-off)
+  (setq powerline-default-separator 'slant)
+
+  ;; pop shell by C-'
+  (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
+
   ;; subtle diff indicators in the fringe
   (setq-default fringes-outside-margins t)
   (hlinum-activate)
@@ -405,7 +410,7 @@ you should place your code here."
 
   ;; auto-save
   (require 'auto-save-buffers-enhanced)
-  (setq auto-save-buffers-enhanced-interval 0.5)
+  (setq auto-save-buffers-enhanced-interval  0.5)
   (setq auto-save-buffers-enhanced-include-regexps '(".+"))
   (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$"))
   (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
@@ -419,6 +424,7 @@ you should place your code here."
         neo-show-updir-line nil
         neo-auto-indent-point nil
         neo-mode-line-type 'none
+        neo-smart-open t
         neo-vc-integration '(face char))
   (doom-themes-neotree-config)
   (setq doom-neotree-file-icons t
@@ -451,7 +457,7 @@ you should place your code here."
   (setq default-input-method "japanese-mozc")
   (setq quail-japanese-use-double-n t)
   (setq mozc-candidate-style 'overlay)
-  (global-set-key (kbd "C-;") 'toggle-input-method)
+  (global-set-key (kbd "C-SPC") 'toggle-input-method)
 
   ;; spell checking setting
   (setq-default ispell-program-name "aspell")
@@ -488,14 +494,14 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#21242B"))))
- '(solaire-default-face ((t (:inherit default :background "#282C34"))))
+ '(fringe ((t (:inherit default))))
  '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
  '(company-scrollbar-bg ((t (:background "gray40"))))
  '(company-scrollbar-fg ((t (:background "white"))))
@@ -512,8 +518,15 @@ you should place your code here."
  '(git-gutter+-added ((t (:foreground "#98C379" :background "#98C379"))))
  '(git-gutter+-deleted ((t (:foreground "#E06C75" :background "#E06C75"))))
  '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
- '(linum-highlight-face ((t (:background "#2F343D"))))
- '(minibuffer-prompt ((t (:foreground "#AAAAAA"))))
+ '(linum ((t (:foreground "#3E4451"))))
+ '(linum-highlight-face ((t (:foreground "#666D7A"))))
+ '(mode-line ((t (:foreground nil :background "#282C34"))))
+ '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
+ '(neo-root-dir-face ((t (:foreground nil))))
  '(neo-vc-added-face ((t (:foreground "#98C379"))))
  '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
+ '(powerline-active1 ((t (:foreground nil :background "#495259"))))
+ '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
+ '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
+ '(solaire-default-face ((t (:inherit default :background "#282C34"))))
  '(vertical-border ((t (:foreground "#21242B")))))

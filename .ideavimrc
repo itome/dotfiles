@@ -5,21 +5,41 @@ inoremap <C-b> <Left>
 noremap <C-a> ^
 noremap <C-e> $
 
-noremap <Space>s :action Find<CR>
 noremap <Space><Space> :action GotoAction<CR>
-noremap <Space>d :action GotoDeclaration<CR>
-noremap <Space>u :action FindUsages<CR>
-noremap <Space>r :action RenameElement<CR>
-noremap <Space>p :action ParameterInfo<CR>
+noremap <Space>ff      :action SearchEverywhere<CR>
+noremap <Space>bb      :action Switcher<CR>
+
+noremap <Space>mgg :action GotoDeclaration<CR>
+noremap <Space>mgb :action Back<CR>
+noremap <Space>mgs :action GotoSuperMethod<CR>
+noremap <Space>mgi :action GotoImplementation<CR>
+noremap <Space>mrr :action RenameElement<CR>
+noremap <Space>mrm :action Move<CR>
+noremap <Space>mri :action Inline<CR>
+noremap <Space>m=  :action Macro.ReformatCodeAndOptimizeImport<CR>
+noremap <Space>msg :action Generate<CR>
+noremap <Space>miu :action FindUsages<CR>
+noremap <Space>mip :action ParameterInfo<CR>
+noremap ,gg :action GotoDeclaration<CR>
+noremap ,gb :action Back<CR>
+noremap ,rr :action RenameElement<CR>
+noremap ,rm :action Move<CR>
+noremap ,=  :action Macro.ReformatCodeAndOptimizeImport<CR>
+noremap ,ri :action Inline<CR>
+noremap ,sg :action Generate<CR>
+noremap ,iu :action FindUsages<CR>
+noremap ,ip :action ParameterInfo<CR>
+noremap ,gs :action GotoSuperMethod<CR>
+noremap ,gi :action GotoImplementation<CR>
+
+noremap <Space>ss  :action Find<CR>
+
 noremap <Space><f10> :action Run<CR>
-noremap <Space><f9> :action Debug<CR>
-noremap <Space>m :action Move<CR>
-noremap <Space>f :action Macro.ReformatCodeAndOptimizeImport<CR>
-noremap <Space>b :action Back<CR>
+noremap <Space><f9>  :action Debug<CR>
+
 noremap <Space>ww :action NextSplitter<CR>
 noremap <Space>w/ :action SplitVertically<CR>
+noremap <Space>0 :action ActivateProjectToolWindow<CR>
+
 noremap <Space><f1> :action ToggleFullScreen<CR>
 noremap <Space>; :action ToggleLineBreakpoint<CR>
-noremap <Space>0 :action ActivateProjectToolWindow<CR>
-noremap <Space>g :action Generate<CR>
-noremap <Space>i :action Inline<CR>
