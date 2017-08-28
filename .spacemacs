@@ -398,6 +398,7 @@ you should place your code here."
 
   ;; pop shell by C-'
   (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
+  (add-hook 'shell-pop-in-after-hook 'evil-emacs-state)
 
   ;; subtle diff indicators in the fringe
   (setq-default fringes-outside-margins t)
