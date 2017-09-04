@@ -436,10 +436,6 @@ you should place your code here."
   (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
         plantuml-output-type "png")
 
-  ;; face color for company quick help
-  (setq company-quickhelp-color-background "#3E4451"
-        company-quickhelp-color-foreground "#ABB2BF")
-
   ;; rainbow-mode setting
   (require 'rainbow-mode)
   (add-hook 'css-mode-hook 'rainbow-mode)
@@ -466,6 +462,11 @@ you should place your code here."
 
   ;; all-the-icons
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+  ;; company mode setting
+  (setq company-quickhelp-color-background "#3E4451"
+        company-quickhelp-color-foreground "#ABB2BF"
+        company-tooltip-margin 2)
 
   ;;
   ;; language settings
@@ -521,6 +522,7 @@ you should place your code here."
  '(git-gutter+-deleted ((t (:foreground "#E06C75" :background "#E06C75"))))
  '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
  '(linum ((t (:foreground "#3E4451"))))
+ '(linum-highlight-face ((t (:foreground "#666D7A"))))
  '(mode-line ((t (:foreground nil :background "#282C34"))))
  '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
  '(neo-root-dir-face ((t (:foreground nil))))
