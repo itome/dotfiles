@@ -327,6 +327,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;; title bar
+  (setq frame-title-format "spacemacs")
   )
 
 (defun dotspacemacs/user-config ()
@@ -342,9 +345,6 @@ you should place your code here."
   ;; emacs setting
   ;;
 
-  ;; title bar
-  (setq frame-title-format "spacemacs")
-
   (setq-default cursor-in-non-selected-windows nil)
 
   ;; line spacing
@@ -355,8 +355,6 @@ you should place your code here."
                 truncate-partial-width-windows t)
 
   (spacemacs/toggle-vi-tilde-fringe-off)
-
-  (global-auto-revert-mode t)
 
   ;; don't create backup files
   (setq make-backup-files nil
@@ -465,6 +463,7 @@ you should place your code here."
 
   ;; company mode setting
   (setq company-quickhelp-color-background "#3E4451"
+        company-minimum-prefix-length 2
         company-quickhelp-color-foreground "#ABB2BF"
         company-tooltip-margin 2)
 
@@ -509,8 +508,8 @@ you should place your code here."
  '(company-scrollbar-bg ((t (:background "#2F343D"))))
  '(company-scrollbar-fg ((t (:background "#828997"))))
  '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2F343D"))))
- '(company-tooltip-annotation ((t (:foreground "#ABB2BF" :background "#2F343D"))))
- '(company-tooltip-annotation-selection ((t (:foreground "white" :background "#3E4451"))))
+ '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2F343D"))))
+ '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
  '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2F343D"))))
  '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
  '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
