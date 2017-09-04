@@ -463,8 +463,9 @@ you should place your code here."
 
   ;; company mode setting
   (setq company-quickhelp-color-background "#3E4451"
-        company-minimum-prefix-length 2
         company-quickhelp-color-foreground "#ABB2BF"
+        company-selection-wrap-around t
+        company-minimum-prefix-length 2
         company-tooltip-margin 2)
 
   ;;
@@ -505,12 +506,12 @@ you should place your code here."
  '(default ((t (:background "#21242B"))))
  '(fringe ((t (:inherit default))))
  '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
- '(company-scrollbar-bg ((t (:background "#2F343D"))))
- '(company-scrollbar-fg ((t (:background "#828997"))))
- '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2F343D"))))
- '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2F343D"))))
+ '(company-scrollbar-bg ((t (:background "#2E3441"))))
+ '(company-scrollbar-fg ((t (:background "#3E4451"))))
+ '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+ '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
  '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
- '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2F343D"))))
+ '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
  '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
  '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
  '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
