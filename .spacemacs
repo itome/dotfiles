@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     c-c++
      javascript
      react
      html
@@ -53,20 +54,18 @@ values."
      git
      markdown
      org
+     spell-checking
      (shell :variables
             shell-default-term-shell "/usr/bin/fish"
             shell-default-shell 'term
             shell-default-full-span nil
             shell-default-height 45
             shell-default-position 'bottom)
-     syntax-checking
-     (spell-checking :variables
-                     enable-flyspell-auto-completion t)
+     (syntax-checking :variables
+                      syntax-checking-enable-tooltips t)
      (version-control :variables
-                      version-control-diff-tool 'git-gutter+
-                      version-control-global-margin t
-                      version-control-diff-side 'left)
-
+                      version-control-diff-side 'left
+                      version-control-diff-tool 'git-gutter+)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -74,15 +73,14 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       atom-one-dark-theme
+                                      doom-themes
+                                      solaire-mode
                                       all-the-icons
+                                      all-the-icons-dired
+                                      hlinum
                                       auto-save-buffers-enhanced
                                       rainbow-mode
-                                      mozc
                                       quickrun
-                                      all-the-icons-dired
-                                      solaire-mode
-                                      doom-themes
-                                      hlinum
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -174,7 +172,7 @@ values."
    ;; The key used for Vim Ex commands (default ":")
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
-   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-emacs-leader-key "M-SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
@@ -384,7 +382,6 @@ you should place your code here."
 
   ;; load theme
   (load-theme 'atom-one-dark t)
-  ;; brighten buffers (that represent real files)
   (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
   (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
   (add-hook 'after-revert-hook #'turn-on-solaire-mode)
@@ -399,14 +396,21 @@ you should place your code here."
   (add-hook 'shell-pop-in-after-hook 'evil-emacs-state)
 
   ;; subtle diff indicators in the fringe
-  (setq-default fringes-outside-margins t)
-  (fringe-mode '(2 . 0))
   (hlinum-activate)
   (setq linum-format " %4d  ")
-  ;; see also custom face variables
-  (setq git-gutter+-added-sign " ")
-  (setq git-gutter+-modified-sign " ")
-  (setq git-gutter+-deleted-sign " ")
+
+  ;; fringe
+  (setq-default fringes-outside-margins t)
+  (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
+    "XX......")
+  (fringe-helper-define 'git-gutter-fr+-modified '(center repeated)
+    "XX......")
+  (fringe-helper-define 'git-gutter-fr+-deleted 'bottom
+    "X........"
+    "XXX......"
+    "XXXXX...."
+    "XXXXXXX.."
+    "XXXXXXXXX")
 
   ;; auto-save
   (require 'auto-save-buffers-enhanced)
@@ -447,13 +451,7 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "SPC R r") 'quickrun)
   (define-key evil-normal-state-map (kbd "SPC R a") 'quickrun-with-arg)
   (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only)
-
-  ;; enable emacs-mozc
-  (require 'mozc)
-  (setq default-input-method "japanese-mozc")
-  (setq quail-japanese-use-double-n t)
-  (setq mozc-candidate-style 'overlay)
-  (global-set-key (kbd "C-SPC") 'toggle-input-method)
+  (define-key quickrun--mode-map (kbd "q") 'kill-buffer-and-window)
 
   ;; spell checking setting
   (setq-default ispell-program-name "aspell")
@@ -497,14 +495,13 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (disaster company-c-headers cmake-mode clang-format spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "#21242B"))))
- '(fringe ((t (:inherit default))))
  '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
  '(company-scrollbar-bg ((t (:background "#2E3441"))))
  '(company-scrollbar-fg ((t (:background "#3E4451"))))
@@ -518,9 +515,7 @@ you should place your code here."
  '(flycheck-error ((t (:foreground "red" :background nil))))
  '(flycheck-info ((t (:foreground "skyblue" :background nil))))
  '(flycheck-warning ((t (:foreground "yellow" :background nil))))
- '(git-gutter+-added ((t (:foreground "#98C379" :background "#98C379"))))
- '(git-gutter+-deleted ((t (:foreground "#E06C75" :background "#E06C75"))))
- '(git-gutter+-modified ((t (:foreground "#D19A66" :background "#D19A66"))))
+ '(fringe ((t (:inherit default))))
  '(linum ((t (:foreground "#3E4451"))))
  '(linum-highlight-face ((t (:foreground "#666D7A"))))
  '(mode-line ((t (:foreground nil :background "#282C34"))))
