@@ -334,6 +334,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; line spacing
   (setq-default line-spacing 4)
+
+  (setq-default cursor-in-non-selected-windows nil)
+
+  ;; not fold in right edge
+  (setq-default truncate-lines t
+                truncate-partial-width-windows t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -348,12 +354,6 @@ you should place your code here."
   ;;
   ;; emacs setting
   ;;
-
-  (setq-default cursor-in-non-selected-windows nil)
-
-  ;; not fold in right edge
-  (setq-default truncate-lines t
-                truncate-partial-width-windows t)
 
   (spacemacs/toggle-vi-tilde-fringe-off)
 
