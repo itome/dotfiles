@@ -461,9 +461,6 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only)
   (define-key quickrun--mode-map (kbd "q") 'kill-buffer-and-window)
 
-  ;; spell checking setting
-  (setq-default ispell-program-name "aspell")
-
   ;; all-the-icons
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
