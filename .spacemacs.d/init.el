@@ -436,15 +436,15 @@ you should place your code here."
           doom-neotree-line-spacing 4))
 
   ;; auto-save
-  (require 'auto-save-buffers-enhanced)
-  (setq auto-save-buffers-enhanced-interval  0.5)
-  (setq auto-save-buffers-enhanced-include-regexps '(".+"))
-  (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$"))
-  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
-  (setq auto-save-buffers-enhanced-quiet-save-p t)
-  (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer
-        (locate-user-emacs-file "scratch"))
-  (auto-save-buffers-enhanced t)
+  (use-package auto-save-buffers-enhanced
+    :config
+    (setq auto-save-buffers-enhanced-interval  0.5)
+    (setq auto-save-buffers-enhanced-include-regexps '(".+"))
+    (setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$"))
+    (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
+    (setq auto-save-buffers-enhanced-quiet-save-p t)
+    (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer (locate-user-emacs-file "scratch"))
+    (auto-save-buffers-enhanced t))
 
   ;; rainbow-mode setting
   (use-package rainbow-mode
@@ -463,7 +463,7 @@ you should place your code here."
     (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only))
 
   ;; all-the-icons
-  (use-package all-the-icons-dired-mode
+  (use-package all-the-icons-dired
     :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
   ;; magit setting
