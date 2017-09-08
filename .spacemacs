@@ -57,7 +57,6 @@ values."
      git
      markdown
      org
-     spell-checking
      (shell :variables
             shell-default-term-shell "/usr/bin/fish"
             shell-default-shell 'term
