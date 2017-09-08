@@ -1,5 +1,5 @@
 #!/bin/sh
-ln -sf ~/dotfiles/.spacemacs ~/.spacemacs
+ln -sf ~/dotfiles/.spacemacs.d/init.el ~/.spacemacs
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/fish ~/.config/
 ln -sf ~/dotfiles/.bashrc ~/.bashrc

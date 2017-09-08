@@ -354,6 +354,8 @@ you should place your code here."
   ;; emacs setting
   ;;
 
+  (add-to-list 'load-path "~/dotfiles/.spacemacs.d/local/")
+
   (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; don't create backup files
@@ -361,20 +363,7 @@ you should place your code here."
         create-lockfiles nil
         auto-save-default nil)
 
-  ;; backspace like intellij idea
-  (defun smart-backspace ()
-    (interactive)
-    (let* ((current (save-excursion
-                      (point)))
-           (beginning (save-excursion
-                        (beginning-of-line)
-                        (point))))
-      (if (string-match "^[ \t]*$" (buffer-substring beginning current))
-          (progn
-            (kill-line 0)
-            (delete-backward-char 1)
-            (indent-for-tab-command))
-        (delete-backward-char 1))))
+  (require 'smart-backspace)
   (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
   (define-key key-translation-map [?\C-h] [?\C-?])
 
@@ -469,6 +458,9 @@ you should place your code here."
         company-selection-wrap-around t
         company-minimum-prefix-length 2
         company-tooltip-margin 2)
+
+  ;; magit setting
+  (require 'magit-pretty-graph)
 
   ;;
   ;; language settings
