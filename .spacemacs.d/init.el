@@ -351,46 +351,32 @@ you should place your code here."
 
 
   ;;
-  ;; emacs setting
+  ;; emacs settings
   ;;
 
   (add-to-list 'load-path "~/dotfiles/.spacemacs.d/local/")
-
-  (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; don't create backup files
   (setq make-backup-files nil
         create-lockfiles nil
         auto-save-default nil)
 
-  (require 'smart-backspace)
-  (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
-  (define-key key-translation-map [?\C-h] [?\C-?])
-
   ;;
-  ;; package setting
+  ;; layer settings
   ;;
 
-  ;; load theme
-  (load-theme 'atom-one-dark t)
-  (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
-  (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
-  (add-hook 'after-revert-hook #'turn-on-solaire-mode)
-  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
-
-  ;; mode-line setting
+  ;; spaceline setting
   (spaceline-toggle-minor-modes-off)
   (setq powerline-default-separator 'slant)
 
-  ;; pop shell by C-'
+  ;; diable tilde
+  (spacemacs/toggle-vi-tilde-fringe-off)
+
+  ;; shell layer
   (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
   (add-hook 'shell-pop-in-after-hook 'evil-emacs-state)
 
-  ;; subtle diff indicators in the fringe
-  (hlinum-activate)
-  (setq linum-format " %4d  ")
-
-  ;; fringe
+  ;; version-controll layer
   (setq-default fringes-outside-margins t)
   (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
     "XX......")
@@ -408,6 +394,47 @@ you should place your code here."
     "XXX................"
     "X..................")
 
+  ;; auto-completion layer
+  (setq company-quickhelp-color-background "#3E4451"
+        company-quickhelp-color-foreground "#ABB2BF"
+        company-selection-wrap-around t
+        company-minimum-prefix-length 2
+        company-tooltip-margin 2)
+
+  ;;
+  ;; additional package settings
+  ;;
+
+  ;; load theme
+  (use-package atom-one-dark-theme
+    :init (load-theme 'atom-one-dark t))
+  (use-package solaire-mode
+    :init
+    (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+    (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
+    (add-hook 'after-revert-hook #'turn-on-solaire-mode)
+    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+
+  ;; hlinum setting
+  (use-package hlinum
+    :config
+    (hlinum-activate)
+    (setq linum-format " %4d  "))
+
+  ;; neotree setting
+  (use-package doom-themes
+    :init
+    (setq neo-banner-message nil
+          neo-show-updir-line nil
+          neo-auto-indent-point nil
+          neo-mode-line-type 'none
+          neo-smart-open t
+          neo-vc-integration '(face char))
+    :config
+    (doom-themes-neotree-config)
+    (setq doom-neotree-file-icons t
+          doom-neotree-line-spacing 4))
+
   ;; auto-save
   (require 'auto-save-buffers-enhanced)
   (setq auto-save-buffers-enhanced-interval  0.5)
@@ -419,48 +446,34 @@ you should place your code here."
         (locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t)
 
-  ;; neotree setting
-  (setq neo-banner-message nil
-        neo-show-updir-line nil
-        neo-auto-indent-point nil
-        neo-mode-line-type 'none
-        neo-smart-open t
-        neo-vc-integration '(face char))
-  (doom-themes-neotree-config)
-  (setq doom-neotree-file-icons t
-        doom-neotree-line-spacing 4)
-
-  ;; plantuml setting
-  (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
-        plantuml-output-type "png")
-
   ;; rainbow-mode setting
-  (require 'rainbow-mode)
-  (add-hook 'css-mode-hook 'rainbow-mode)
-  (add-hook 'less-css-mode-hook 'rainbow-mode)
-  (add-hook 'web-mode-hook 'rainbow-mode)
-  (add-hook 'react-mode-hook 'rainbow-mode)
-  (add-hook 'emacs-lisp-mode-hook 'rainbow-mode)
+  (use-package rainbow-mode
+    :config
+    (add-hook 'css-mode-hook 'rainbow-mode)
+    (add-hook 'less-css-mode-hook 'rainbow-mode)
+    (add-hook 'web-mode-hook 'rainbow-mode)
+    (add-hook 'react-mode-hook 'rainbow-mode)
+    (add-hook 'emacs-lisp-mode-hook 'rainbow-mode))
 
   ;; quickrun setting
-  (require 'quickrun)
-  (define-key evil-normal-state-map (kbd "SPC R r") 'quickrun)
-  (define-key evil-normal-state-map (kbd "SPC R a") 'quickrun-with-arg)
-  (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only)
-  (define-key quickrun--mode-map (kbd "q") 'kill-buffer-and-window)
+  (use-package quickrun
+    :config
+    (define-key evil-normal-state-map (kbd "SPC R r") 'quickrun)
+    (define-key evil-normal-state-map (kbd "SPC R a") 'quickrun-with-arg)
+    (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only))
 
   ;; all-the-icons
-  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-
-  ;; company mode setting
-  (setq company-quickhelp-color-background "#3E4451"
-        company-quickhelp-color-foreground "#ABB2BF"
-        company-selection-wrap-around t
-        company-minimum-prefix-length 2
-        company-tooltip-margin 2)
+  (use-package all-the-icons-dired-mode
+    :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
   ;; magit setting
-  (require 'magit-pretty-graph)
+  (use-package magit-pretty-graph)
+
+  ;; smart backspace setting
+  (use-package smart-backspace
+    :config
+    (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
+    (define-key key-translation-map [?\C-h] [?\C-?]))
 
   ;;
   ;; language settings
@@ -477,6 +490,10 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
+  ;; plantuml setting
+  (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
+        plantuml-output-type "png")
 
   ;; c-c++
   (add-hook 'c++-mode-hook 'clang-format-bindings)
