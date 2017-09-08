@@ -47,4 +47,4 @@
       (delete-backward-char 1))))
 
 (provide 'smart-backspace)
-;;; magit-pretty-graph.el ends here
+;;; smart-backspace.el ends here
