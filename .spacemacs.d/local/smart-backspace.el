@@ -23,7 +23,6 @@
 ;; For a full copy of the GNU General Public License
 ;; see <http://www.gnu.org/licenses/>.
 
-;;; Commentary:
 ;; backspace like intellij idea
 
 ;; set keybindings for smart-backspace
@@ -32,10 +31,12 @@
 ;;   (define-key key-translation-map [?\C-h] [?\C-?])
 
 ;;; Code:
-(defun smart-backspace ()
-  (interactive)
-  (let* ((current (save-excursion
-                    (point)))
+(load "smart-hungry-delete")
+(smart-hungry-delete-add-default-hooks)
+
+(defun smart-backspace (arg)
+  (interactive "P")
+  (let* ((current (point))
          (beginning (save-excursion
                       (beginning-of-line)
                       (point))))
@@ -44,7 +45,7 @@
           (kill-line 0)
           (delete-backward-char 1)
           (indent-for-tab-command))
-      (delete-backward-char 1))))
+      (smart-hungry-delete-backward-char arg))))
 
 (provide 'smart-backspace)
 ;;; smart-backspace.el ends here

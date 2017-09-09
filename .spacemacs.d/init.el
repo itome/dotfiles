@@ -496,10 +496,16 @@ you should place your code here."
         plantuml-output-type "png")
 
   ;; c-c++
-  (add-hook 'c++-mode-hook 'clang-format-bindings)
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (clang-format-bindings)))
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (clang-format-bindings)))
   (defun clang-format-bindings ()
     (define-key evil-normal-state-map (kbd "SPC m =") 'clang-format-buffer)
-    (define-key evil-normal-state-map (kbd ", =") 'clang-format-buffer)))
+    (define-key evil-normal-state-map (kbd ", =") 'clang-format-buffer))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
