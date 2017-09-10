@@ -19,7 +19,7 @@ noremap <Space>mgi :action GotoImplementation<CR>
 noremap <Space>mrr :action RenameElement<CR>
 noremap <Space>mrm :action Move<CR>
 noremap <Space>mri :action Inline<CR>
-noremap <Space>m=  :action Macro.ReformatCodeAndOptimizeImport<CR>
+noremap <Space>m=  :action Macro.OptimizeImportAndReformatCode<CR>
 noremap <Space>msg :action Generate<CR>
 noremap <Space>miu :action FindUsages<CR>
 noremap <Space>mip :action ParameterInfo<CR>
@@ -27,7 +27,7 @@ noremap ,gg :action GotoDeclaration<CR>
 noremap ,gb :action Back<CR>
 noremap ,rr :action RenameElement<CR>
 noremap ,rm :action Move<CR>
-noremap ,=  :action Macro.ReformatCodeAndOptimizeImport<CR>
+noremap ,=  :action Macro.OptimizeImportAndReformatCode<CR>
 noremap ,ri :action Inline<CR>
 noremap ,sg :action Generate<CR>
 noremap ,iu :action FindUsages<CR>

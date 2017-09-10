@@ -373,7 +373,7 @@ you should place your code here."
   (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; shell layer
-  (global-set-key (kbd "C-'") 'spacemacs/default-pop-shell)
+  (global-set-key (kbd "C-;") 'spacemacs/default-pop-shell)
   (add-hook 'shell-pop-in-after-hook 'evil-emacs-state)
 
   ;; version-controll layer
