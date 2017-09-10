@@ -58,7 +58,7 @@ values."
      markdown
      org
      (shell :variables
-            shell-default-term-shell "/usr/bin/fish"
+            shell-default-term-shell "/usr/local/bin/fish"
             shell-default-shell 'term
             shell-default-full-span nil
             shell-default-height 45

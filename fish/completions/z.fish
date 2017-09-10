@@ -1,1 +1,0 @@
-/home/takeshi/.config/fisherman/z/completions/z.fish

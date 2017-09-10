@@ -1,4 +1,7 @@
 
+set visualbell
+set noerrorbells
+
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
