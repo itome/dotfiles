@@ -162,7 +162,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 21
+                               :size 12
                                :weight regular
                                :width regular
                                :powerline-scale 1.1)
@@ -538,8 +538,8 @@ you should place your code here."
  '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
  '(flycheck-error ((t (:foreground "red" :background nil))))
  '(flycheck-info ((t (:foreground "skyblue" :background nil))))
- '(flycheck-warning ((t (:foreground "yellow" :background nil))))
  '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+ '(flycheck-warning ((t (:foreground "yellow" :background nil))))
  '(fringe ((t (:inherit default))))
  '(header-line ((t (:background "#21242B"))))
  '(linum ((t (:foreground "#3E4451"))))
