@@ -328,6 +328,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+  (setq ns-command-modifier (quote meta))
+  (setq ns-alternate-modifier (quote super))
+
   ;; title bar
   (setq frame-title-format "spacemacs")
 
@@ -397,7 +400,6 @@ you should place your code here."
   ;; auto-completion layer
   (setq company-quickhelp-color-background "#3E4451"
         company-quickhelp-color-foreground "#ABB2BF"
-        company-selection-wrap-around t
         company-minimum-prefix-length 2
         company-tooltip-margin 2)
 
