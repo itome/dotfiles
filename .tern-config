@@ -3,12 +3,8 @@
   "libs": [
     "browser"
   ],
-  "loadEagerly": [
-    "path/to/your/js/**/*.js"
-  ],
   "dontLoad": [
-    "node_modules/**",
-    "path/to/your/js/**/*.js"
+    "node_modules/**"
   ],
   "plugins": {
     "es_modules": {},

@@ -26,6 +26,11 @@ alias weather="wget http://wttr.in -O -"
 
 set -g theme_display_date no
 set -g theme_title_use_abbreviated_path no
-set -g theme_show_exit_status yes
-set -g theme_color_scheme gruvbox
+set -g theme_title_display_process no
+set -g theme_title_display_path yes
+set -g theme_title_display_user no
+set -g theme_display_vagrant yes
+set -g theme_color_scheme atom-one-dark
 set -g fish_prompt_pwd_dir_length 0
+set -g theme_project_dir_length 1
+set -g theme_git_worktree_support yes
