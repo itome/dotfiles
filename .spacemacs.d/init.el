@@ -541,6 +541,9 @@ you should place your code here."
   (defun clang-format-bindings ()
     (define-key evil-normal-state-map (kbd "SPC m =") 'clang-format-buffer)
     (define-key evil-normal-state-map (kbd ", =") 'clang-format-buffer))
+
+  ;; markdown
+  (add-hook 'markdown-mode-hook 'spacemacs/toggle-truncate-lines-off)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
