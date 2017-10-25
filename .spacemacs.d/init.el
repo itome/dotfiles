@@ -56,7 +56,8 @@ values."
      org
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-help-tooltip 'manual)
+                      auto-completion-enable-help-tooltip 'manual
+                      :disabled-for markdown git)
      better-defaults
      git
      markdown
