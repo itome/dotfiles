@@ -1,0 +1,1 @@
+/Users/takeshi/.config/fisherman/metro/set_color_custom.fish

@@ -1,1 +1,1 @@
-/Users/takeshi/.config/fisherman/bobthefish/fish_mode_prompt.fish
+/Users/takeshi/.config/fisherman/metro/fish_mode_prompt.fish

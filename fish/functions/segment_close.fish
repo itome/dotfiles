@@ -1,0 +1,1 @@
+/Users/takeshi/.config/fisherman/segment/segment_close.fish

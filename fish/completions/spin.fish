@@ -1,0 +1,1 @@
+/Users/takeshi/.config/fisherman/spin/completions/spin.fish

@@ -1,0 +1,1 @@
+/Users/takeshi/.config/fisherman/getopts/getopts.fish
