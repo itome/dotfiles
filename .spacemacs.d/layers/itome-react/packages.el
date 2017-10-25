@@ -14,6 +14,7 @@
         rjsx-mode
         company
         company-tern
+        emmet-mode
         evil-matchit
         flycheck
         ggtags
@@ -60,6 +61,10 @@
 
 (defun itome-react/post-init-company-tern ()
   (push 'company-tern company-backends-rjsx-mode))
+
+(defun itome-react/post-init-emmet-mode ()
+  (add-hook 'rjsx-mode-hook 'emmet-mode)
+  (add-hook 'rjsx-mode-hook 'spacemacs//setup-emmet-mode-for-react))
 
 (defun itome-react/post-init-flycheck ()
   (dolist (mode '(rjsx-mode))
