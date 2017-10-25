@@ -33,6 +33,7 @@ values."
    '(
      yaml
      (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
      javascript
      itome-react
@@ -43,7 +44,6 @@ values."
      ruby
      shell-scripts
      vimscript
-     python
      (python :variables
              python-enable-yapf-format-on-save nil)
      common-lisp
@@ -80,6 +80,9 @@ values."
                                       auto-save-buffers-enhanced
                                       rainbow-mode
                                       quickrun
+                                      smart-backspace
+                                      flycheck-package
+                                      migemo
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -423,8 +426,7 @@ you should place your code here."
           neo-show-updir-line nil
           neo-auto-indent-point nil
           neo-mode-line-type 'none
-          neo-smart-open t
-          neo-vc-integration '(face char))
+          neo-smart-open t)
     :config
     (define-key evil-normal-state-map (kbd "SPC -") 'neotree-refresh)
     (doom-themes-neotree-config)
@@ -454,13 +456,37 @@ you should place your code here."
   ;; quickrun setting
   (use-package quickrun
     :config
+    (spacemacs/declare-prefix "R" "quickrun")
     (define-key evil-normal-state-map (kbd "SPC R r") 'quickrun)
     (define-key evil-normal-state-map (kbd "SPC R a") 'quickrun-with-arg)
+    (define-key evil-normal-state-map (kbd "SPC R e") 'quickrun-shell)
     (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only))
 
   ;; all-the-icons
   (use-package all-the-icons-dired
     :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+  ;; flycheck-popup-tip
+  (use-package flycheck-popup-tip
+    :config
+    (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)
+    (setq flycheck-popup-tip-margin 2))
+
+  (use-package migemo
+    :config
+    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+    (setq migemo-command "cmigemo")
+    (setq migemo-options '("-q" "--emacs"))
+    (setq migemo-user-dictionary nil)
+    (setq migemo-coding-system 'utf-8)
+    (setq migemo-regex-dictionary nil)
+    (migemo-init)
+    (with-eval-after-load "helm"
+      (helm-migemo-mode t)))
+
+  ;; flycheck emacs package
+  (eval-after-load 'flycheck
+    '(flycheck-package-setup))
 
   ;; magit setting
   (use-package magit-pretty-graph)
