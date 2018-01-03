@@ -538,55 +538,41 @@ you should place your code here."
 
   ;; markdown
   (add-hook 'markdown-mode-hook 'spacemacs/toggle-truncate-lines-off)
+
+  ;; custom face
+  (custom-set-faces
+   '(default ((t (:background "#21242B"))))
+   '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
+   '(company-scrollbar-bg ((t (:background "#2E3441"))))
+   '(company-scrollbar-fg ((t (:background "#3E4451"))))
+   '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+   '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
+   '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
+   '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+   '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
+   '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
+   '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
+   '(flycheck-error ((t (:foreground "red" :background nil))))
+   '(flycheck-info ((t (:foreground "skyblue" :background nil))))
+   '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+   '(flycheck-warning ((t (:foreground "yellow" :background nil))))
+   '(fringe ((t (:inherit default))))
+   '(header-line ((t (:background "#21242B"))))
+   '(linum ((t (:foreground "#3E4451"))))
+   '(linum-highlight-face ((t (:foreground "#666D7A"))))
+   '(mode-line ((t (:foreground nil :background "#282C34"))))
+   '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
+   '(neo-root-dir-face ((t (:foreground nil))))
+   '(neo-vc-added-face ((t (:foreground "#98C379"))))
+   '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
+   '(powerline-active1 ((t (:foreground nil :background "#495259"))))
+   '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
+   '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
+   '(solaire-default-face ((t (:inherit default :background "#282C34"))))
+   '(vertical-border ((t (:foreground "#21242B")))))
   )
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (ghub let-alist smart-backspace migemo flycheck-package package-lint rainbow-identifiers color-identifiers-mode prettier-js eslintd-fix yaml-mode tide typescript-mode csv-mode stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "#21242B"))))
- '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
- '(company-scrollbar-bg ((t (:background "#2E3441"))))
- '(company-scrollbar-fg ((t (:background "#3E4451"))))
- '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
- '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
- '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
- '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
- '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
- '(flycheck-error ((t (:foreground "red" :background nil))))
- '(flycheck-info ((t (:foreground "skyblue" :background nil))))
- '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(flycheck-warning ((t (:foreground "yellow" :background nil))))
- '(fringe ((t (:inherit default))))
- '(header-line ((t (:background "#21242B"))))
- '(linum ((t (:foreground "#3E4451"))))
- '(linum-highlight-face ((t (:foreground "#666D7A"))))
- '(mode-line ((t (:foreground nil :background "#282C34"))))
- '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
- '(neo-root-dir-face ((t (:foreground nil))))
- '(neo-vc-added-face ((t (:foreground "#98C379"))))
- '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
- '(powerline-active1 ((t (:foreground nil :background "#495259"))))
- '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
- '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
- '(solaire-default-face ((t (:inherit default :background "#282C34"))))
- '(vertical-border ((t (:foreground "#21242B")))))
+
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -603,38 +589,4 @@ This function is called at the very end of Spacemacs initialization."
  '(package-selected-packages
    (quote
     (symon string-inflection ruby-refactor realgud test-simple loc-changes load-relative password-generator impatient-mode helm-purpose window-purpose imenu-list flycheck-bashate farmhouse-theme evil-lion editorconfig cmake-ide levenshtein browse-at-remote prettier-js eslintd-fix yaml-mode tide typescript-mode csv-mode stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "#21242B"))))
- '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
- '(company-scrollbar-bg ((t (:background "#2E3441"))))
- '(company-scrollbar-fg ((t (:background "#3E4451"))))
- '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
- '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
- '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
- '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
- '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
- '(flycheck-error ((t (:foreground "red" :background nil))))
- '(flycheck-info ((t (:foreground "skyblue" :background nil))))
- '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
- '(flycheck-warning ((t (:foreground "yellow" :background nil))))
- '(fringe ((t (:inherit default))))
- '(header-line ((t (:background "#21242B"))))
- '(linum ((t (:foreground "#3E4451"))))
- '(linum-highlight-face ((t (:foreground "#666D7A"))))
- '(mode-line ((t (:foreground nil :background "#282C34"))))
- '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
- '(neo-root-dir-face ((t (:foreground nil))))
- '(neo-vc-added-face ((t (:foreground "#98C379"))))
- '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
- '(powerline-active1 ((t (:foreground nil :background "#495259"))))
- '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
- '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
- '(solaire-default-face ((t (:inherit default :background "#282C34"))))
- '(vertical-border ((t (:foreground "#21242B")))))
 )
