@@ -403,6 +403,9 @@ you should place your code here."
         company-minimum-prefix-length 2
         company-tooltip-margin 2)
 
+  ;; helm setting
+  (setq helm-swoop-split-direction 'split-window-vertically)
+
   ;;
   ;; additional package settings
   ;;
@@ -432,7 +435,6 @@ you should place your code here."
           neo-mode-line-type 'none
           neo-smart-open t)
     :config
-    (define-key evil-normal-state-map (kbd "SPC -") 'neotree-refresh)
     (doom-themes-neotree-config)
     (setq doom-neotree-file-icons t
           doom-neotree-line-spacing 4))
