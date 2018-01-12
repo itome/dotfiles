@@ -403,8 +403,8 @@ you should place your code here."
         company-minimum-prefix-length 2
         company-tooltip-margin 2)
 
-  ;; helm setting
-  (setq helm-swoop-split-direction 'split-window-vertically)
+  ;; helm layer
+  (setq helm-swoop-split-window-function 'spacemacs//display-helm-window)
 
   ;;
   ;; additional package settings
