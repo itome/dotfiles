@@ -365,6 +365,7 @@ you should place your code here."
 
   ;; don't create backup files
   (setq make-backup-files nil
+        ns-use-srgb-colorspace nil
         create-lockfiles nil
         auto-save-default nil)
 
@@ -400,6 +401,7 @@ you should place your code here."
   ;; auto-completion layer
   (setq company-quickhelp-color-background "#3E4451"
         company-quickhelp-color-foreground "#ABB2BF"
+        company-idle-delay 0
         company-minimum-prefix-length 2
         company-tooltip-margin 2)
 
@@ -413,21 +415,8 @@ you should place your code here."
 
   ;; load theme
   (use-package atom-one-dark-theme
-    :init (load-theme 'atom-one-dark t))
-  (use-package solaire-mode
     :init
-    (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
-    (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
-    (add-hook 'after-revert-hook #'turn-on-solaire-mode)
-    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
-
-  ;; line-number setting
-  (use-package hlinum
-    :config
-    (hlinum-activate)
-    (setq linum-format " %4d  "))
-
-  ;; neotree setting
+    (load-theme 'atom-one-dark t))
   (use-package doom-themes
     :init
     (setq neo-banner-message nil
@@ -440,6 +429,18 @@ you should place your code here."
     (doom-themes-neotree-config)
     (setq doom-neotree-file-icons t
           doom-neotree-line-spacing 4))
+  (use-package solaire-mode
+    :init
+    (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+    (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
+    (add-hook 'after-revert-hook #'turn-on-solaire-mode)
+    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+
+  ;; line-number setting
+  (use-package hlinum
+    :config
+    (hlinum-activate)
+    (setq linum-format " %4d  "))
 
   ;; auto-save
   (use-package auto-save-buffers-enhanced
@@ -509,6 +510,11 @@ you should place your code here."
    js2-basic-offset 2
    js-indent-level 2
    js-switch-indent-offset 2
+   js2-include-browser-externs nil
+   js2-mode-show-parse-errors nil
+   js2-mode-show-strict-warnings nil
+   js2-highlight-external-variables nil
+   js2-include-jslint-globals nil
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
@@ -523,6 +529,8 @@ you should place your code here."
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
                 (setup-tide-mode))))
   (setq typescript-indent-level 2)
+  (spacemacs/set-leader-keys-for-major-mode 'typescript-mode
+    "gg" 'tide-jump-to-definition)
 
   ;; plantuml setting
   (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
