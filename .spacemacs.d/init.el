@@ -485,6 +485,9 @@ you should place your code here."
     (define-key evil-insert-state-map [?\C-?] 'smart-backspace)
     (define-key key-translation-map [?\C-h] [?\C-?]))
 
+  ;; helm setting
+  (setq helm-split-window-inside-p t)
+
   ;;
   ;; language settings
   ;;
