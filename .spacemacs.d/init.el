@@ -542,6 +542,9 @@ you should place your code here."
   ;; markdown
   (add-hook 'markdown-mode-hook 'spacemacs/toggle-truncate-lines-off)
 
+  ;; dart
+  (setq dart-sdk-path "/usr/local/Celler/dart/1.24.3/bin/dart")
+
   ;; custom face
   (custom-set-faces
    '(default ((t (:background "#21242B"))))

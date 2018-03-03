@@ -13,11 +13,7 @@
   '(
     flycheck
     company
-    (dart-mode :location (recipe
-      :fetcher github
-      :repo "sid-kurias/dart-mode"
-      )
-    )
+    dart-mode
     (company-dart
      :location (recipe
       :fetcher github
@@ -34,22 +30,21 @@
   (push 'company-dart company-backends-dart-mode))
 
 (defun itome-dart/post-init-flycheck ()
-  (spacemacs/add-flycheck-hook 'dart-mode))
+  (add-hook 'dart-mode-hook 'flycheck-mode))
 
 (defun itome-dart/init-dart-mode ()
   (use-package dart-mode
     :defer t
     :init
     (progn
-      (add-hook 'dart-mode-hook #'(lambda () (modify-syntax-entry ?_ "w"))))
+      (setq dart-enable-analysis-server t))
     :config
     (progn
-        (spacemacs/set-leader-keys
-        ;; (spacemacs/set-leader-keys-for-major-mode 'dart-mode
-          "mj" 'dart-jump-to-defn
-          "mf" 'dartfmt
-          "mi" 'dart-imports
-          "ms" 'dart-sort-members
+        (spacemacs/set-leader-keys-for-major-mode 'dart-mode
+          "gg" 'dart-jump-to-defn
+          "=" 'dartfmt
+          "i" 'dart-imports
+          "s" 'dart-sort-members
           )
     )
 ))
