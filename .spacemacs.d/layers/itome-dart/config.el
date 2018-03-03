@@ -12,3 +12,7 @@
 ;; variables
 
 (setq dart-enable-analysis-server t)
+
+(spacemacs|defvar-company-backends dart-dart)
+
+(spacemacs|define-jump-handlers dart-mode)

@@ -9,23 +9,16 @@
 ;;
 ;;; License: GPLv3
 
-(setq dart-packages
+(setq itome-dart-packages
   '(
     flycheck
-    helm
+    company
     (dart-mode :location (recipe
       :fetcher github
       :repo "sid-kurias/dart-mode"
       )
     )
-    (helm-dart :location (recipe
-      :fetcher github
-      :repo "sid-kurias/dart-mode"
-      :files ("helm-dart.el")
-      )
-    )
     (company-dart
-     :toggle (configuration-layer/package-usedp 'company)
      :location (recipe
       :fetcher github
       :repo "sid-kurias/company-dart"
@@ -34,18 +27,16 @@
   )
 )
 
+(defun itome-dart/post-init-company ()
+  (spacemacs|add-company-hook dart-mode))
 
-(defun dart/post-init-flycheck ()
+(defun itome-dart/post-init-company-dart ()
+  (push 'company-dart company-backends-dart-mode))
+
+(defun itome-dart/post-init-flycheck ()
   (spacemacs/add-flycheck-hook 'dart-mode))
 
-(defun dart/init-company-dart ()
-  (use-package company-dart
-    :defer t
-    :init (spacemacs|add-company-backends
-            :backends company-dart
-            :modes dart-mode)))
-
-(defun dart/init-dart-mode ()
+(defun itome-dart/init-dart-mode ()
   (use-package dart-mode
     :defer t
     :init
@@ -59,15 +50,6 @@
           "mf" 'dartfmt
           "mi" 'dart-imports
           "ms" 'dart-sort-members
-          )
-
-        (use-package helm-dart
-          :config
-          (progn
-            (spacemacs/set-leader-keys
-              "mq" 'helm-dart-quick-fix
-              )
-            )
           )
     )
 ))
