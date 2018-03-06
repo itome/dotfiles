@@ -36,6 +36,7 @@ noremap ,gs :action GotoSuperMethod<CR>
 noremap ,gi :action GotoImplementation<CR>
 
 noremap <Space>ss  :action Find<CR>
+noremap <Space>/ :action FindInPath<CR>
 
 noremap <Space><f10> :action Run<CR>
 noremap <Space><f9>  :action Debug<CR>

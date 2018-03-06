@@ -1,1 +1,1 @@
-/Users/takeshi/.config/fisherman/pwd_is_home/pwd_is_home.fish
+/Users/JP22685/.config/fisherman/pwd_is_home/pwd_is_home.fish

@@ -1,1 +1,1 @@
-/Users/takeshi/.config/fisherman/metro/fish_prompt.fish
+/Users/JP22685/.config/fisherman/metro/fish_prompt.fish

@@ -1,1 +1,1 @@
-/Users/takeshi/.config/fisherman/segment/segment.fish
+/Users/JP22685/.config/fisherman/segment/segment.fish
