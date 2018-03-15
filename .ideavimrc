@@ -10,6 +10,7 @@ noremap <C-e> $
 
 noremap <Space><Space> :action GotoAction<CR>
 noremap <Space>ff      :action SearchEverywhere<CR>
+noremap <Space>fs      :action SaveAll<CR>
 noremap <Space>bb      :action Switcher<CR>
 
 noremap <Space>mgg :action GotoDeclaration<CR>
@@ -42,6 +43,7 @@ noremap <Space><f10> :action Run<CR>
 noremap <Space><f9>  :action Debug<CR>
 
 noremap <Space>ww :action NextSplitter<CR>
+noremap <Space>wd :action CloseEditor<CR>
 noremap <Space>w/ :action SplitVertically<CR>
 noremap <Space>0 :action ActivateProjectToolWindow<CR>
 
