@@ -367,6 +367,8 @@ you should place your code here."
         ns-use-srgb-colorspace nil
         create-lockfiles nil
         auto-save-default nil)
+  ;; japanese input bug fix
+  (setq redisplay-dont-pause nil)
 
   ;;
   ;; layer settings
