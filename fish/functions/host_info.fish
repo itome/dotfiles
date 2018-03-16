@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/host_info/host_info.fish
+/Users/takeshi/.config/fisherman/host_info/host_info.fish

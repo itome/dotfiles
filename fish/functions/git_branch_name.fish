@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/git_util/git_branch_name.fish
+/Users/takeshi/.config/fisherman/git_util/git_branch_name.fish

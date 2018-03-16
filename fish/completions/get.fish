@@ -1,1 +1,0 @@
-/Users/takeshi/.config/fisherman/get/completions/get.fish

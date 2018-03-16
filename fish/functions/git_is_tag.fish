@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/git_util/git_is_tag.fish
+/Users/takeshi/.config/fisherman/git_util/git_is_tag.fish

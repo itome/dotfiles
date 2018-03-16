@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/humanize_duration/humanize_duration.fish
+/Users/takeshi/.config/fisherman/humanize_duration/humanize_duration.fish

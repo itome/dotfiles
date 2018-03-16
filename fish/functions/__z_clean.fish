@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/z/functions/__z_clean.fish
+/Users/takeshi/.config/fisherman/z/functions/__z_clean.fish

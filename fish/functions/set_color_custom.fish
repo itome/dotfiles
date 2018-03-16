@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/metro/set_color_custom.fish
+/Users/takeshi/.config/fisherman/metro/set_color_custom.fish

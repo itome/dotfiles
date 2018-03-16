@@ -1,1 +1,1 @@
-/Users/JP22685/.config/fisherman/git_util/git_is_staged.fish
+/Users/takeshi/.config/fisherman/git_util/git_is_staged.fish
