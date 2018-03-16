@@ -37,14 +37,17 @@
     :defer t
     :init
     (progn
+      (electric-pair-mode 1)
       (setq dart-enable-analysis-server t))
     :config
     (progn
-        (spacemacs/set-leader-keys-for-major-mode 'dart-mode
-          "gg" 'dart-jump-to-defn
-          "=" 'dartfmt
-          "i" 'dart-imports
-          "s" 'dart-sort-members
-          )
-    )
-))
+      (evil-define-key 'normal dart-mode-map
+        (kbd ", g g") 'dart-goto
+        (kbd ", g r") 'dart-find-refs
+        (kbd ", =") 'dart-format
+        (kbd ", h") 'dart-show-hover
+        (kbd "SPC m g g") 'dart-goto
+        (kbd "SPC m g r") 'dart-find-refs
+        (kbd "SPC m =") 'dart-format
+        (kbd "SPC m h") 'dart-show-hover)
+    )))

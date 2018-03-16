@@ -36,10 +36,8 @@ values."
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
      javascript
-     itome-dart
      itome-react
-     (typescript :variables
-                 typescript-fmt-tool 'typescript-formatter)
+     typescript
      html
      octave
      ruby
@@ -383,7 +381,7 @@ you should place your code here."
 
   ;; version-controll layer
   (setq-default fringes-outside-margins t)
-  (fringe-mode '(2 . 0))
+  (fringe-mode '(8 . 0))
   (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
     "XX......")
   (fringe-helper-define 'git-gutter-fr+-modified '(center repeated)
@@ -497,6 +495,9 @@ you should place your code here."
   (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode)
 
   ;; javascript
+  (eval-after-load 'flycheck
+    '(custom-set-variables
+      '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
   (setq-default
    ;; js2-mod
    js2-basic-offset 2
@@ -515,11 +516,6 @@ you should place your code here."
    web-mode-attr-indent-offset 2)
 
   ;; typescript
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (setup-tide-mode))))
   (setq typescript-indent-level 2)
   (spacemacs/set-leader-keys-for-major-mode 'typescript-mode
     "gg" 'tide-jump-to-definition)
@@ -541,9 +537,6 @@ you should place your code here."
 
   ;; markdown
   (add-hook 'markdown-mode-hook 'spacemacs/toggle-truncate-lines-off)
-
-  ;; dart
-  (setq dart-sdk-path "/usr/local/Celler/dart/1.24.3/bin/dart")
 
   ;; custom face
   (custom-set-faces
