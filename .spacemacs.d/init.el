@@ -497,8 +497,7 @@ you should place your code here."
     (editorconfig-mode 1))
   (add-to-list 'editorconfig-indentation-alist
                '(jsx-mode js2-basic-offset)
-               '(rjsx-mode js2-basic-offset)
-               '(c-mode c-basic-offset))
+               '(rjsx-mode js2-basic-offset))
 
   ;;
   ;; language settings
