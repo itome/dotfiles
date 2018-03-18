@@ -1,7 +1,7 @@
 #!/bin/sh
 ln -sf ~/dotfiles/.spacemacs.d/init.el ~/.spacemacs
 # original layers for spacemacs
-ln -s ~/dotfiles/.spacemacs.d/+itome ~/.emacs.d/layers/+itome
+cp -r ~/dotfiles/.spacemacs.d/+itome ~/.emacs.d/layers/+itome
 
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/fish ~/.config/
