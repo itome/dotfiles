@@ -62,7 +62,7 @@ values."
      git
      markdown
      (syntax-checking :variables
-                      syntax-checking-enable-tooltips t)
+                      syntax-checking-enable-tooltips nil)
      (version-control :variables
                       version-control-diff-side 'left
                       version-control-diff-tool 'git-gutter+)
@@ -442,12 +442,6 @@ you should place your code here."
   ;; all-the-icons
   (use-package all-the-icons-dired
     :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-
-  ;; flycheck-popup-tip
-  (use-package flycheck-popup-tip
-    :config
-    (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)
-    (setq flycheck-popup-tip-margin 2))
 
   (use-package migemo
     :config
