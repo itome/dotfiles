@@ -439,10 +439,13 @@ you should place your code here."
     (define-key evil-normal-state-map (kbd "SPC R e") 'quickrun-shell)
     (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only))
 
-  (use-package real-auto-save
+  (use-package auto-save-buffers-enhanced
     :config
-    (add-hook 'find-file-hook 'real-auto-save-mode)
-    (setq real-auto-save-interval 1))
+    (setq auto-save-buffers-enhanced-interval 1
+          auto-save-buffers-enhanced-include-regexps '(".+")
+          auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$")
+          auto-save-buffers-enhanced-quiet-save-p t)
+    (auto-save-buffers-enhanced t))
 
   ;; all-the-icons
   (use-package all-the-icons-dired
