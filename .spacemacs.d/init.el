@@ -84,7 +84,6 @@ values."
                                       flycheck-package
                                       migemo
                                       editorconfig
-                                      real-auto-save
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -464,9 +463,6 @@ you should place your code here."
   ;; flycheck emacs package
   (eval-after-load 'flycheck
     '(flycheck-package-setup))
-
-  ;; magit setting
-  (use-package magit-pretty-graph)
 
   ;; smart backspace setting
   (use-package smart-backspace
