@@ -1,6 +1,8 @@
-
 set visualbell
 set noerrorbells
+set showcmd
+set display=lastline
+set clipboard=unnamed
 
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
