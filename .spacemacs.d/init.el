@@ -78,6 +78,7 @@ values."
                                       solaire-mode
                                       all-the-icons
                                       all-the-icons-dired
+                                      spaceline-all-the-icons
                                       hlinum
                                       quickrun
                                       smart-backspace
@@ -163,7 +164,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 12
+                               :size 13
                                :weight regular
                                :width regular
                                :powerline-scale 1.1)
@@ -423,6 +424,16 @@ you should place your code here."
     (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
     (add-hook 'after-revert-hook #'turn-on-solaire-mode)
     (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+
+  (use-package spaceline-all-the-icons
+    :after spaceline
+    :config
+    (spaceline-all-the-icons-theme)
+    (setq spaceline-all-the-icons-slim-render t)
+    (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+    (spaceline-toggle-all-the-icons-git-ahead-on)
+    (spaceline-toggle-all-the-icons-minor-modes-off))
 
   ;; line-number setting
   (use-package hlinum
