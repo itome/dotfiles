@@ -345,7 +345,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default cursor-in-non-selected-windows nil)
 
   ;; not fold in right edge
-  (setq-default truncate-t lines
+  (setq-default truncate-lines t
                 truncate-partial-width-windows t)
   )
 
@@ -373,10 +373,6 @@ you should place your code here."
   ;;
   ;; layer settings
   ;;
-
-  ;; spaceline setting
-  (spaceline-toggle-minor-modes-off)
-  (setq powerline-default-separator 'slant)
 
   ;; diable tilde
   (spacemacs/toggle-vi-tilde-fringe-off)
@@ -429,11 +425,15 @@ you should place your code here."
     :after spaceline
     :config
     (spaceline-all-the-icons-theme)
-    (setq spaceline-all-the-icons-slim-render t)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
+    (setq spaceline-all-the-icons-separator-type 'slant)
     (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
-    (spaceline-toggle-all-the-icons-git-ahead-on)
-    (spaceline-toggle-all-the-icons-minor-modes-off))
+    (spaceline-toggle-all-the-icons-minor-modes-off)
+    (spaceline-toggle-all-the-icons-projectile-off)
+    (spaceline-toggle-all-the-icons-dedicated-off)
+    (spaceline-toggle-all-the-icons-vc-icon-off)
+    (spaceline-toggle-all-the-icons-window-number-off))
 
   ;; line-number setting
   (use-package hlinum
