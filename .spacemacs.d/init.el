@@ -163,7 +163,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 12
                                :weight regular
                                :width regular)
@@ -429,8 +429,9 @@ you should place your code here."
     :config
     (spaceline-all-the-icons-theme)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    (setq spaceline-responsive nil)
     (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
-    (setq spaceline-all-the-icons-separator-type 'slant)
+    (setq spaceline-all-the-icons-separator-type 'arrow)
     (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
     (spaceline-toggle-all-the-icons-minor-modes-off)
     (spaceline-toggle-all-the-icons-projectile-off)
