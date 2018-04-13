@@ -163,11 +163,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 13
+   dotspacemacs-default-font '("Fira Code"
+                               :size 12
                                :weight regular
                                :width regular
-                               :powerline-scale 1.1)
+                               :powerline-scale 2.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -347,6 +347,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; not fold in right edge
   (setq-default truncate-lines t
                 truncate-partial-width-windows t)
+
+  ;; font ligature
+  (if (fboundp 'mac-auto-operator-composition-mode)
+      (mac-auto-operator-composition-mode))
   )
 
 (defun dotspacemacs/user-config ()
