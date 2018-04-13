@@ -166,8 +166,7 @@ values."
    dotspacemacs-default-font '("Fira Code"
                                :size 12
                                :weight regular
-                               :width regular
-                               :powerline-scale 2.0)
+                               :width regular)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
