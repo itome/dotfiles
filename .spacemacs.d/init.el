@@ -429,6 +429,8 @@ you should place your code here."
     :config
     (spaceline-all-the-icons-theme)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
+    (setq spaceline-all-the-icons-highlight-file-name t)
     (setq spaceline-responsive nil)
     (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
     (setq spaceline-all-the-icons-separator-type 'arrow)
@@ -456,7 +458,7 @@ you should place your code here."
 
   (use-package auto-save-buffers-enhanced
     :config
-    (setq auto-save-buffers-enhanced-interval 1
+    (setq auto-save-buffers-enhanced-interval 0.4
           auto-save-buffers-enhanced-include-regexps '(".+")
           auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$")
           auto-save-buffers-enhanced-quiet-save-p t)
