@@ -1,1 +1,0 @@
-/Users/takeshi/.config/fisherman/metro/fish_right_prompt.fish

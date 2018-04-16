@@ -1,1 +1,0 @@
-/Users/takeshi/.config/fisherman/segment/segment_right.fish

@@ -1,1 +1,0 @@
-/Users/takeshi/.config/fisherman/z/functions/zadd.awk
