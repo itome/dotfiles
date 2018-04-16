@@ -1,7 +1,7 @@
 #!/bin/sh
+# custom layers for spacemacs
+ln -sf ~/dotfiles/.spacemacs.d/private/ ~/.emacs.d/private/
 ln -sf ~/dotfiles/.spacemacs.d/init.el ~/.spacemacs
-# original layers for spacemacs
-cp -r ~/dotfiles/.spacemacs.d/+itome ~/.emacs.d/layers/+itome
 
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 
