@@ -428,6 +428,7 @@ you should place your code here."
     :after spaceline
     :config
     (spaceline-all-the-icons-theme)
+    (spaceline-all-the-icons--setup-package-updates)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
     (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
     (setq spaceline-all-the-icons-highlight-file-name t)
@@ -440,6 +441,8 @@ you should place your code here."
     (spaceline-toggle-all-the-icons-dedicated-off)
     (spaceline-toggle-all-the-icons-vc-icon-off)
     (spaceline-toggle-all-the-icons-window-number-off))
+  (if (get-buffer "*Packages*") (kill-buffer "*Packages*"))
+  (if (get-buffer "*spacemacs*") (switch-to-buffer "*spacemacs*"))
 
   ;; line-number setting
   (use-package hlinum
