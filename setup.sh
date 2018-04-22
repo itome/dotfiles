@@ -1,4 +1,5 @@
 #!/bin/sh
+ln -sf ~/dotfiles/.profile ~/.profile
 # custom layers for spacemacs
 ln -sf ~/dotfiles/.spacemacs.d/private/ ~/.emacs.d/private/
 ln -sf ~/dotfiles/.spacemacs.d/init.el ~/.spacemacs

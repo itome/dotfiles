@@ -1,11 +1,5 @@
-set -x PATH $PATH $HOME/.nodebrew/current/bin
-set -x PATH $PATH $HOME/flutter/bin
-set -x PATH $PATH $HOME/.pyenv/bin
-set -x PATH $PATH $HOME/Library/Android/sdk/tools
-set -x PATH $PATH $HOME/Library/Android/sdk/platform-tools
-set -x JAVA_HOME (/usr/libexec/java_home -v 1.8.0)
-set -x PATH $PATH $HOME/.pyenv/bin
-source (pyenv init - | psub)
+# load .enviroment
+source ~/.profile;clear;
 
 # remove greeting message
 set fish_greeting ""
