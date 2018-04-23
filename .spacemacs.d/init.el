@@ -410,7 +410,6 @@ you should place your code here."
     (setq neo-banner-message nil
           neo-show-updir-line nil
           neo-auto-indent-point nil
-          neo-mode-line-type 'none
           neo-vc-integration t
           neo-smart-open t)
     :config
@@ -428,6 +427,7 @@ you should place your code here."
     :after spaceline
     :config
     (spaceline-all-the-icons-theme)
+    (spaceline-all-the-icons--setup-neotree)
     (spaceline-all-the-icons--setup-package-updates)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
     (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
