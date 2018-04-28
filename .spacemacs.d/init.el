@@ -412,7 +412,8 @@ you should place your code here."
           neo-show-updir-line nil
           neo-auto-indent-point nil
           neo-vc-integration t
-          neo-smart-open t)
+          neo-smart-open t
+          neo-mode-line-type 'none)
     :config
     (doom-themes-neotree-config)
     (setq doom-neotree-file-icons t
@@ -542,6 +543,10 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode
+    "gb" 'tern-pop-find-definition)
+  (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+    "gb" 'tern-pop-find-definition)
 
   ;; typescript
   (setq typescript-indent-level 2)
