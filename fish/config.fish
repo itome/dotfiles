@@ -1,5 +1,4 @@
-# load .enviroment
-source ~/.profile;clear;
+clear
 
 # remove greeting message
 set fish_greeting ""
