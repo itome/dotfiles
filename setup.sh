@@ -17,5 +17,3 @@ ln -sf ~/dotfiles/.tern-config ~/.tern-config
 ln -sf ~/dotfiles/.tigrc ~/.tigrc
 ln -sf ~/dotfiles/.jshintrc ~/.jshintrc
 ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
-
-chsh -s `which fish`
