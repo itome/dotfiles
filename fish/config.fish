@@ -1,7 +1,7 @@
 clear
 
 # remove greeting message
-set fish_greeting ""
+set fish_greeting
 
 # key bindings
 function fish_user_key_bindings

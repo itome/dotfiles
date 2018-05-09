@@ -8,9 +8,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# If not running interactively, don't do anything
-case $- in
-    *i*) exec fish;;
-    *) return;;
-esac
