@@ -246,7 +246,7 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
@@ -429,7 +429,6 @@ you should place your code here."
     :after spaceline
     :config
     (spaceline-all-the-icons-theme)
-    (spaceline-all-the-icons--setup-package-updates)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
     (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
     (setq spaceline-all-the-icons-highlight-file-name t)
@@ -442,8 +441,6 @@ you should place your code here."
     (spaceline-toggle-all-the-icons-dedicated-off)
     (spaceline-toggle-all-the-icons-vc-icon-off)
     (spaceline-toggle-all-the-icons-window-number-off))
-  (if (get-buffer "*Packages*") (kill-buffer "*Packages*"))
-  (if (get-buffer "*spacemacs*") (switch-to-buffer "*spacemacs*"))
 
   ;; line-number setting
   (use-package hlinum
