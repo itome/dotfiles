@@ -429,7 +429,6 @@ you should place your code here."
     :after spaceline
     :config
     (spaceline-all-the-icons-theme)
-    (spaceline-all-the-icons--setup-neotree)
     (spaceline-all-the-icons--setup-package-updates)
     (setq spaceline-all-the-icons-icon-set-modified 'circle)
     (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
@@ -507,6 +506,9 @@ you should place your code here."
                '(jsx-mode js2-basic-offset)
                '(rjsx-mode js2-basic-offset))
 
+  ;; junk file
+  (setq open-junk-file-format "~/Projects/junk/%Y/%m/%Y-%m-%d-%H%M%S.")
+
   ;;
   ;; language settings
   ;;
@@ -516,12 +518,6 @@ you should place your code here."
     :config
     (spacemacs/set-leader-keys-for-major-mode 'emacs-lisp-mode
       "eb" 'lispxmp))
-  (eval-after-load 'semantic
-    (add-hook 'semantic-mode-hook
-              (lambda ()
-                (dolist (x (default-value 'completion-at-point-functions))
-                  (when (string-prefix-p "semantic-" (symbol-name x))
-                    (remove-hook 'completion-at-point-functions x))))))
 
   ;; javascript
   (eval-after-load 'flycheck
@@ -558,6 +554,7 @@ you should place your code here."
         plantuml-output-type "png")
 
   ;; c-c++
+  (setq semanticdb-find-default-throttle '(file))
   (add-hook 'c-mode-hook
             (lambda ()
               (clang-format-bindings)))
