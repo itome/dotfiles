@@ -43,6 +43,8 @@ noremap <Space>/ :action FindInPath<CR>
 
 noremap <Space><f10> :action Run<CR>
 noremap <Space><f9>  :action Debug<CR>
+noremap <Space>R :action Run<CR>
+noremap <Space>D  :action Debug<CR>
 
 noremap <Space>ww :action NextSplitter<CR>
 noremap <Space>wd :action CloseEditor<CR>
