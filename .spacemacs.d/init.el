@@ -412,10 +412,10 @@ you should place your code here."
 
   ;; load theme
   (use-package atom-one-dark-theme
-    :init
-    (spacemacs|use-package-add-hook powerline
-      :post-config
-      (load-theme 'atom-one-dark t)))
+    :after powerline
+    :config
+    (load-theme 'atom-one-dark t))
+
   (use-package doom-themes
     :init
     (setq neo-banner-message nil
@@ -428,18 +428,38 @@ you should place your code here."
     (doom-themes-neotree-config)
     (setq doom-neotree-file-icons t
           doom-neotree-line-spacing 4))
+
   (use-package hlinum
     :config
     (hlinum-activate)
     (setq linum-format " %4d  "))
+
   (use-package solaire-mode
     :init
     (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
     (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
     (add-hook 'after-revert-hook #'turn-on-solaire-mode)
     (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
+
   (use-package all-the-icons-dired
     :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+  (use-package spaceline-all-the-icons
+    :after spaceline
+    :config
+    (spaceline-all-the-icons-theme)
+    (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
+    (setq spaceline-all-the-icons-highlight-file-name t)
+    (setq spaceline-responsive nil)
+    (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
+    (setq spaceline-all-the-icons-separator-type 'arrow)
+    (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+    (spaceline-toggle-all-the-icons-minor-modes-off)
+    (spaceline-toggle-all-the-icons-projectile-off)
+    (spaceline-toggle-all-the-icons-dedicated-off)
+    (spaceline-toggle-all-the-icons-vc-icon-off)
+    (spaceline-toggle-all-the-icons-window-number-off))
 
   (use-package auto-save-buffers-enhanced
     :config
