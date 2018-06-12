@@ -38,7 +38,7 @@ values."
      cscope
      javascript
      java
-     itome-react
+     react
      typescript
      html
      octave
@@ -84,7 +84,6 @@ values."
                                       quickrun
                                       smart-backspace
                                       flycheck-package
-                                      add-node-modules-path
                                       migemo
                                       editorconfig
                                       lispxmp
@@ -386,12 +385,20 @@ you should place your code here."
   ;; version-controll layer
   (setq-default fringes-outside-margins t)
   (fringe-mode '(8 . 0))
-  (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
-    "XX......")
-  (fringe-helper-define 'git-gutter-fr+-modified '(center repeated)
-    "XX......")
-  (fringe-helper-define 'git-gutter-fr+-deleted '(center repeated)
-    "XX......")
+  (use-package git-gutter-fringe+
+    :commands git-gutter+-mode
+    :config
+    (progn
+      ;; custom graphics that works nice with half-width fringes
+      (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
+        "XX......"
+        )
+      (fringe-helper-define 'git-gutter-fr+-modified '(center repeated)
+        "XX......"
+        )
+      (fringe-helper-define 'git-gutter-fr+-deleted '(center repeated)
+        "XX......"
+        )))
 
   ;; company mode
   (setq company-quickhelp-color-background "#3E4451"
@@ -542,12 +549,6 @@ you should place your code here."
     "gb" 'tern-pop-find-definition)
   (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
     "gb" 'tern-pop-find-definition)
-  (use-package add-node-modules-path
-    :config
-    (eval-after-load 'rjsx-mode
-      '(add-hook 'rjsx-mode-hook #'add-node-modules-path))
-    (eval-after-load 'js2-mode
-      '(add-hook 'js2-mode-hook #'add-node-modules-path)))
 
   ;; typescript
   (setq typescript-indent-level 2)
