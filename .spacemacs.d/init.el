@@ -51,7 +51,7 @@ values."
      emacs-lisp
      plantuml
      csv
-     semantic
+     ;; semantic
 
      helm
      org
@@ -74,17 +74,15 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      atom-one-dark-theme
                                       doom-themes
                                       solaire-mode
                                       all-the-icons
                                       all-the-icons-dired
-                                      spaceline-all-the-icons
                                       hlinum
-                                      quickrun
                                       smart-backspace
                                       flycheck-package
                                       migemo
+                                      prettier-js
                                       editorconfig
                                       lispxmp
                                       )
@@ -123,7 +121,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -136,7 +134,7 @@ values."
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-verbose-loading t
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -368,6 +366,7 @@ you should place your code here."
   ;;
 
   (add-to-list 'load-path "~/dotfiles/.spacemacs.d/local/")
+  (add-to-list 'custom-theme-load-path "~/dotfiles/.spacemacs.d/local/")
 
   ;; don't create backup files
   (setq make-backup-files nil
@@ -414,7 +413,9 @@ you should place your code here."
   ;; load theme
   (use-package atom-one-dark-theme
     :init
-    (load-theme 'atom-one-dark t))
+    (spacemacs|use-package-add-hook powerline
+      :post-config
+      (load-theme 'atom-one-dark t)))
   (use-package doom-themes
     :init
     (setq neo-banner-message nil
@@ -427,44 +428,18 @@ you should place your code here."
     (doom-themes-neotree-config)
     (setq doom-neotree-file-icons t
           doom-neotree-line-spacing 4))
+  (use-package hlinum
+    :config
+    (hlinum-activate)
+    (setq linum-format " %4d  "))
   (use-package solaire-mode
     :init
     (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
     (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
     (add-hook 'after-revert-hook #'turn-on-solaire-mode)
     (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
-
-  (use-package spaceline-all-the-icons
-    :after spaceline
-    :config
-    (spaceline-all-the-icons-theme)
-    (setq spaceline-all-the-icons-icon-set-modified 'circle)
-    (setq spaceline-all-the-icons-icon-set-git-ahead 'commit)
-    (setq spaceline-all-the-icons-highlight-file-name t)
-    (setq spaceline-responsive nil)
-    (setq spaceline-all-the-icons-icon-set-flycheck-slim 'outline)
-    (setq spaceline-all-the-icons-separator-type 'arrow)
-    (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
-    (spaceline-toggle-all-the-icons-minor-modes-off)
-    (spaceline-toggle-all-the-icons-projectile-off)
-    (spaceline-toggle-all-the-icons-dedicated-off)
-    (spaceline-toggle-all-the-icons-vc-icon-off)
-    (spaceline-toggle-all-the-icons-window-number-off))
-
-  ;; line-number setting
-  (use-package hlinum
-    :config
-    (hlinum-activate)
-    (setq linum-format " %4d  "))
-
-  ;; quickrun setting
-  (use-package quickrun
-    :config
-    (spacemacs/declare-prefix "R" "quickrun")
-    (define-key evil-normal-state-map (kbd "SPC R r") 'quickrun)
-    (define-key evil-normal-state-map (kbd "SPC R a") 'quickrun-with-arg)
-    (define-key evil-normal-state-map (kbd "SPC R e") 'quickrun-shell)
-    (define-key evil-normal-state-map (kbd "SPC R c") 'quickrun-compile-only))
+  (use-package all-the-icons-dired
+    :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
   (use-package auto-save-buffers-enhanced
     :config
@@ -473,10 +448,6 @@ you should place your code here."
           auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$")
           auto-save-buffers-enhanced-quiet-save-p t)
     (auto-save-buffers-enhanced t))
-
-  ;; all-the-icons
-  (use-package all-the-icons-dired
-    :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
   (use-package migemo
     :config
@@ -524,6 +495,34 @@ you should place your code here."
     :config
     (spacemacs/set-leader-keys-for-major-mode 'emacs-lisp-mode
       "eb" 'lispxmp))
+
+  ;; prettier
+  (use-package prettier-js
+    :init
+    (add-hook 'web-mode-hook 'prettier-js-mode)
+    (add-hook 'typescript-mode-hook 'prettier-js-mode)
+    (add-hook 'js2-mode-hook 'prettier-js-mode)
+    (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+    (add-hook 'typescript-tsx-mode-hook 'prettier-js-mode)
+    :config
+    (spacemacs|use-package-add-hook typescript-mode
+      :post-config
+      (spacemacs/set-leader-keys-for-major-mode 'typescript-mode
+        "=" 'prettier-js)
+      (spacemacs/set-leader-keys-for-major-mode 'typescript-tsx-mode
+        "=" 'prettier-js))
+    (spacemacs|use-package-add-hook js2-mode
+      :post-config
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode
+        "=" 'prettier-js))
+    (spacemacs|use-package-add-hook rjsx-mode
+      :post-config
+      (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+        "=" 'prettier-js))
+    (spacemacs|use-package-add-hook web-mode
+      :post-config
+      (spacemacs/set-leader-keys-for-major-mode 'web-mode
+        "=" 'prettier-js)))
 
   ;; javascript
   (eval-after-load 'flycheck
@@ -578,10 +577,30 @@ you should place your code here."
   (setq eclim-eclipse-dirs '("/Applications/Eclipse.app")
         eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclim"
         eclimd-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclimd")
+  )
 
-  ;; custom face
+
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(evil-want-Y-yank-to-eol nil)
+   '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+   '(package-selected-packages
+     (quote
+      (prettier-js spaceline-all-the-icons add-node-modules-path helm-cscope xcscope flycheck-ycmd company-ycmd ycmd request-deferred deferred lispxmp real-auto-save company-emacs-eclim eclim editorconfig company-dart dart-mode typescript-mode powerline slime pcre2el spinner org-category-capture alert log4e gntp org-plus-contrib markdown-mode macrostep skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors js2-mode hydra parent-mode projectile request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter package-lint flycheck pkg-info epl flx magit magit-popup git-commit ghub let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight web-completion-data dash-functional tern pos-tip company inf-ruby bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s all-the-icons memoize helm avy helm-core async auto-complete popup org-mime zoom yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tide tagedit stickyfunc-enhance srefactor spaceline solaire-mode smeargle smart-backspace slime-company slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pyvenv pytest pyenv-mode py-isort pug-mode popwin plantuml-mode pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree mwim move-text mmm-mode minitest migemo markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hlinum hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-package flx-ido fish-mode fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump doom-themes disaster diminish diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile atom-one-dark-theme all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+   '(paradox-github-token t))
   (custom-set-faces
-   '(default ((t (:background "#21242B"))))
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
    '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
    '(company-scrollbar-bg ((t (:background "#2E3441"))))
    '(company-scrollbar-fg ((t (:background "#3E4451"))))
@@ -598,8 +617,8 @@ you should place your code here."
    '(flycheck-warning ((t (:foreground "yellow" :background nil))))
    '(fringe ((t (:inherit default))))
    '(git-gutter+-added ((t (:foreground "#009933"))))
-   '(git-gutter+-modified ((t (:foreground "#cc00ff"))))
    '(git-gutter+-deleted ((t (:foreground "#cc0066"))))
+   '(git-gutter+-modified ((t (:foreground "#cc00ff"))))
    '(header-line ((t (:background "#21242B"))))
    '(linum ((t (:foreground "#3E4451"))))
    '(linum-highlight-face ((t (:foreground "#666D7A"))))
@@ -613,25 +632,6 @@ you should place your code here."
    '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
    '(solaire-default-face ((t (:inherit default :background "#282C34"))))
    '(vertical-border ((t (:foreground "#21242B")))))
-  )
-
-
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(ansi-color-names-vector
-     ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
-   '(evil-want-Y-yank-to-eol nil)
-   '(package-selected-packages
-     (quote
-      (symon string-inflection ruby-refactor realgud test-simple loc-changes load-relative password-generator impatient-mode helm-purpose window-purpose imenu-list flycheck-bashate farmhouse-theme evil-lion editorconfig cmake-ide levenshtein browse-at-remote prettier-js eslintd-fix yaml-mode tide typescript-mode csv-mode stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format spaceline-all-the-icons solaire-mode org-category-capture company-quickhelp hlinum doom-themes all-the-icons-dired flyspell-popup quickrun mozc rainbow-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core popup rjsx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data plantuml-mode lispxmp auto-save-buffers-enhanced rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby insert-shebang fish-mode company-shell all-the-icons memoize font-lock+ vimrc-mode dactyl-mode yapfify xterm-color web-beautify unfill slime-company slime shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements mwim multi-term mmm-mode markdown-toc markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode helm-pydoc git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md eshell-z eshell-prompt-extras esh-help diff-hl cython-mode company-tern dash-functional tern company-anaconda common-lisp-snippets coffee-mode anaconda-mode pythonic smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor async company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete atom-one-dark-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
