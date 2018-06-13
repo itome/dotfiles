@@ -568,6 +568,17 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'typescript-mode
     "gg" 'tide-jump-to-definition)
 
+  (use-package add-node-modules-path
+    :init
+    (eval-after-load 'js2-mode
+      '(add-hook 'js2-mode-hook #'add-node-modules-path))
+    (eval-after-load 'rjsx-mode
+      '(add-hook 'rjsx-mode-hook #'add-node-modules-path))
+    (eval-after-load 'typescript-mode
+      '(add-hook 'typescript-mode-hook #'add-node-modules-path))
+    (eval-after-load 'typescript-tsx-mode
+      '(add-hook 'typescript-tsx-mode-hook #'add-node-modules-path)))
+
   ;; plantuml setting
   (setq plantuml-jar-path "/home/takeshi/ProgramFiles/plantuml.jar"
         plantuml-output-type "png")
