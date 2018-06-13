@@ -518,12 +518,6 @@ you should place your code here."
 
   ;; prettier
   (use-package prettier-js
-    :init
-    (add-hook 'web-mode-hook 'prettier-js-mode)
-    (add-hook 'typescript-mode-hook 'prettier-js-mode)
-    (add-hook 'js2-mode-hook 'prettier-js-mode)
-    (add-hook 'rjsx-mode-hook 'prettier-js-mode)
-    (add-hook 'typescript-tsx-mode-hook 'prettier-js-mode)
     :config
     (spacemacs|use-package-add-hook typescript-mode
       :post-config
