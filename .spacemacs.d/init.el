@@ -596,11 +596,6 @@ you should place your code here."
 
   ;; markdown
   (add-hook 'markdown-mode-hook 'spacemacs/toggle-truncate-lines-off)
-
-  ;; java
-  (setq eclim-eclipse-dirs '("/Applications/Eclipse.app")
-        eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclim"
-        eclimd-executable "/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.7.2/bin/eclimd")
   )
 
 
