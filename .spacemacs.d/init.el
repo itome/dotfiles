@@ -612,54 +612,54 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(evil-want-Y-yank-to-eol nil)
-   '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
-   '(package-selected-packages
-     (quote
-      (graphviz-dot-mode spaceline-all-the-icons add-node-modules-path helm-cscope xcscope flycheck-ycmd company-ycmd ycmd request-deferred deferred lispxmp real-auto-save company-emacs-eclim eclim editorconfig company-dart dart-mode typescript-mode powerline slime pcre2el spinner org-category-capture alert log4e gntp org-plus-contrib markdown-mode macrostep skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors js2-mode hydra parent-mode projectile request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter package-lint flycheck pkg-info epl flx magit magit-popup git-commit ghub let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight web-completion-data dash-functional tern pos-tip company inf-ruby bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s all-the-icons memoize helm avy helm-core async auto-complete popup org-mime zoom yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tide tagedit stickyfunc-enhance srefactor spaceline solaire-mode smeargle smart-backspace slime-company slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pyvenv pytest pyenv-mode py-isort pug-mode popwin plantuml-mode pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree mwim move-text mmm-mode minitest migemo markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hlinum hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-package flx-ido fish-mode fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump doom-themes disaster diminish diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile atom-one-dark-theme all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
-   '(paradox-github-token t))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
-   '(company-scrollbar-bg ((t (:background "#2E3441"))))
-   '(company-scrollbar-fg ((t (:background "#3E4451"))))
-   '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
-   '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
-   '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
-   '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
-   '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
-   '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
-   '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
-   '(flycheck-error ((t (:foreground "red" :background nil))))
-   '(flycheck-info ((t (:foreground "skyblue" :background nil))))
-   '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
-   '(flycheck-warning ((t (:foreground "yellow" :background nil))))
-   '(fringe ((t (:inherit default))))
-   '(git-gutter+-added ((t (:foreground "#009933"))))
-   '(git-gutter+-deleted ((t (:foreground "#cc0066"))))
-   '(git-gutter+-modified ((t (:foreground "#cc00ff"))))
-   '(header-line ((t (:background "#21242B"))))
-   '(linum ((t (:foreground "#3E4451"))))
-   '(linum-highlight-face ((t (:foreground "#666D7A"))))
-   '(mode-line ((t (:foreground nil :background "#282C34"))))
-   '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
-   '(neo-root-dir-face ((t (:foreground nil))))
-   '(neo-vc-added-face ((t (:foreground "#98C379"))))
-   '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
-   '(powerline-active1 ((t (:foreground nil :background "#495259"))))
-   '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
-   '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
-   '(solaire-default-face ((t (:inherit default :background "#282C34"))))
-   '(vertical-border ((t (:foreground "#21242B")))))
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+ '(package-selected-packages
+   (quote
+    (ac-ispell prettier-js graphviz-dot-mode spaceline-all-the-icons add-node-modules-path helm-cscope xcscope flycheck-ycmd company-ycmd ycmd request-deferred deferred lispxmp real-auto-save company-emacs-eclim eclim editorconfig company-dart dart-mode typescript-mode powerline slime pcre2el spinner org-category-capture alert log4e gntp org-plus-contrib markdown-mode macrostep skewer-mode simple-httpd json-snatcher json-reformat multiple-cursors js2-mode hydra parent-mode projectile request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter package-lint flycheck pkg-info epl flx magit magit-popup git-commit ghub let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight web-completion-data dash-functional tern pos-tip company inf-ruby bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s all-the-icons memoize helm avy helm-core async auto-complete popup org-mime zoom yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tide tagedit stickyfunc-enhance srefactor spaceline solaire-mode smeargle smart-backspace slime-company slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters quickrun pyvenv pytest pyenv-mode py-isort pug-mode popwin plantuml-mode pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree mwim move-text mmm-mode minitest migemo markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hlinum hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-package flx-ido fish-mode fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump doom-themes disaster diminish diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-quickhelp company-c-headers company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile atom-one-dark-theme all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(paradox-github-token t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-preview-common ((t (:foreground "lightgray" :background nil :underline t))))
+ '(company-scrollbar-bg ((t (:background "#2E3441"))))
+ '(company-scrollbar-fg ((t (:background "#3E4451"))))
+ '(company-tooltip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+ '(company-tooltip-annotation ((t (:foreground "#61AFEF" :background "#2E3441"))))
+ '(company-tooltip-annotation-selection ((t (:foreground "#61AFEF" :background "#3E4451"))))
+ '(company-tooltip-common ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+ '(company-tooltip-common-selection ((t (:foreground "white" :background "#3E4451"))))
+ '(company-tooltip-selection ((t (:foreground "#ABB2BF" :background "#3E4451"))))
+ '(doom-neotree-dir-face ((t (:foreground "#61AFEF"))))
+ '(flycheck-error ((t (:foreground "red" :background nil))))
+ '(flycheck-info ((t (:foreground "skyblue" :background nil))))
+ '(flycheck-pos-tip ((t (:foreground "#ABB2BF" :background "#2E3441"))))
+ '(flycheck-warning ((t (:foreground "yellow" :background nil))))
+ '(fringe ((t (:inherit default))))
+ '(git-gutter+-added ((t (:foreground "#009933"))))
+ '(git-gutter+-deleted ((t (:foreground "#cc0066"))))
+ '(git-gutter+-modified ((t (:foreground "#cc00ff"))))
+ '(header-line ((t (:background "#21242B"))))
+ '(linum ((t (:foreground "#3E4451"))))
+ '(linum-highlight-face ((t (:foreground "#666D7A"))))
+ '(mode-line ((t (:foreground nil :background "#282C34"))))
+ '(mode-line-inactive ((t (:foreground nil :background "#282C34"))))
+ '(neo-root-dir-face ((t (:foreground nil))))
+ '(neo-vc-added-face ((t (:foreground "#98C379"))))
+ '(neo-vc-edited-face ((t (:foreground "#D19A66"))))
+ '(powerline-active1 ((t (:foreground nil :background "#495259"))))
+ '(powerline-inactive1 ((t (:foreground "#AAAAAA" :background "#121417"))))
+ '(powerline-inactive2 ((t (:foreground nil :background "#495259"))))
+ '(solaire-default-face ((t (:inherit default :background "#282C34"))))
+ '(vertical-border ((t (:foreground "#21242B")))))
+)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
