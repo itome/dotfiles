@@ -36,7 +36,7 @@ values."
      (c-c++ :variable
             c-c++-enable-clang-support t
             c-c++-default-mode-for-headers 'c++-mode)
-     go
+     (go :variables go-use-golangci-lint t)
      cscope
      javascript
      java
@@ -82,6 +82,7 @@ values."
                                       solaire-mode
                                       all-the-icons
                                       all-the-icons-dired
+                                      spaceline-all-the-icons
                                       hlinum
                                       smart-backspace
                                       flycheck-package
@@ -357,8 +358,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 
   (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
-                                            ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/")))
-  )
+                                            ("org" . "orgmode.org/elpa/") ("gnu" . "elpa.gnu.org/packages/"))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
