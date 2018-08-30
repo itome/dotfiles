@@ -10,3 +10,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(rbenv init -)"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
