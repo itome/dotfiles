@@ -70,7 +70,7 @@ values."
                       syntax-checking-enable-tooltips nil)
      (version-control :variables
                       version-control-diff-side 'left
-                      version-control-diff-tool 'git-gutter+)
+                      version-control-diff-tool 'git-gutter)
      colors
      )
    ;; List of additional packages that will be installed without being
@@ -392,20 +392,17 @@ you should place your code here."
   ;; version-controll layer
   (setq-default fringes-outside-margins t)
   (fringe-mode '(8 . 0))
-  (use-package git-gutter-fringe+
-    :commands git-gutter+-mode
+  (use-package git-gutter-fringe
+    :commands git-gutter-mode
     :config
     (progn
       ;; custom graphics that works nice with half-width fringes
-      (fringe-helper-define 'git-gutter-fr+-added '(center repeated)
-        "XX......"
-        )
-      (fringe-helper-define 'git-gutter-fr+-modified '(center repeated)
-        "XX......"
-        )
-      (fringe-helper-define 'git-gutter-fr+-deleted '(center repeated)
-        "XX......"
-        )))
+      (fringe-helper-define 'git-gutter-fr:added '(center repeated)
+        "XX......")
+      (fringe-helper-define 'git-gutter-fr:modified '(center repeated)
+        "XX......")
+      (fringe-helper-define 'git-gutter-fr:deleted nil
+        "XX......")))
 
   ;; company mode
   (setq company-quickhelp-color-background "#3E4451"
