@@ -15,3 +15,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+
+export PATH=$PATH:~/.pub-cache/bin
+
+export PATH=$PATH:~/.roswell/bin
