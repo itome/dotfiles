@@ -14,3 +14,5 @@ ln -sf ~/dotfiles/.tern-config ~/.tern-config
 ln -sf ~/dotfiles/.tigrc ~/.tigrc
 ln -sf ~/dotfiles/.jshintrc ~/.jshintrc
 ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
+
+chmod +x ~/dotfiles/commands/convert_icon_color.sh
