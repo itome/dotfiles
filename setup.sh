@@ -6,6 +6,7 @@ ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 mkdir -p ~/.config/fish/functions
 ln -sf ~/dotfiles/fish/functions/change_color.fish ~/.config/fish/functions/change_color.fish
 ln -sf ~/dotfiles/fish/functions/peco_z.fish ~/.config/fish/functions/peco_z.fish
+ln -sf ~/dotfiles/fish/functions/peco_checkout.fish ~/.config/fish/functions/peco_checkout.fish
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
 ln -sf ~/dotfiles/.jsbeautifyrc ~/.jsbeautifyrc
