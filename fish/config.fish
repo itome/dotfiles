@@ -10,8 +10,8 @@ function fish_user_key_bindings
 end
 
 function pbhighlight
-    pbpaste | highlight -k 'Source Code Pro' -s "Moria" -O rtf -S $argv | pbcopy
-end
+    pbpaste | highlight -k 'Source Code Pro' --syntax=kt -s Moria -O rtf | pbcopy
+ end
 
 alias peco="peco --layout=bottom-up"
 alias emulator="~/Library/Android/sdk/emulator/emulator"
