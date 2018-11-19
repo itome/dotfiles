@@ -5,8 +5,8 @@ set fish_greeting
 
 # key bindings
 function fish_user_key_bindings
-  bind \cf peco_z
-  bind \cc peco_checkout
+    bind \cx\cf peco_z
+    bind \cc peco_checkout
 end
 
 function pbhighlight

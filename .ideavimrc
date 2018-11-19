@@ -53,3 +53,5 @@ noremap <Space>0 :action ActivateProjectToolWindow<CR>
 
 noremap <Space><f1> :action ToggleFullScreen<CR>
 noremap <Space>; :action ToggleLineBreakpoint<CR>
+
+noremap <Space><tab> :action GoToLastTab<CR>
