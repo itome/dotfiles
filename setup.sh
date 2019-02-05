@@ -9,6 +9,8 @@ ln -sf ~/dotfiles/fish/functions/peco_z.fish ~/.config/fish/functions/peco_z.fis
 ln -sf ~/dotfiles/fish/functions/peco_checkout.fish ~/.config/fish/functions/peco_checkout.fish
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+
 ln -sf ~/dotfiles/.jsbeautifyrc ~/.jsbeautifyrc
 ln -sf ~/dotfiles/.eslintrc ~/.eslintrc
 ln -sf ~/dotfiles/.tern-config ~/.tern-config
