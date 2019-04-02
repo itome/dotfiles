@@ -26,3 +26,6 @@ if [ -f '/Users/s04407/google-cloud-sdk/path.bash.inc' ]; then . '/Users/s04407/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/s04407/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/s04407/google-cloud-sdk/completion.bash.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
