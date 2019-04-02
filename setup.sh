@@ -18,4 +18,6 @@ ln -sf ~/dotfiles/.tigrc ~/.tigrc
 ln -sf ~/dotfiles/.jshintrc ~/.jshintrc
 ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
 
+ln -sf ~/dotfiles/.zshrc ~/.zshrc
+
 chmod +x ~/dotfiles/commands/*
