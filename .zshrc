@@ -7,7 +7,7 @@ zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug "peco/peco", as:command, from:gh-r
 zplug 'mollifier/anyframe'
-zplug 'themes/agnoster', from:oh-my-zsh
+zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
