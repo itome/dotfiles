@@ -11,6 +11,8 @@ ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 
+ln -sf ~/dotfiles/karabiner ~/.config/karabiner
+
 ln -sf ~/dotfiles/.jsbeautifyrc ~/.jsbeautifyrc
 ln -sf ~/dotfiles/.eslintrc ~/.eslintrc
 ln -sf ~/dotfiles/.tern-config ~/.tern-config
