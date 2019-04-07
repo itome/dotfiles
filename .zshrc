@@ -53,3 +53,12 @@ zstyle ":anyframe:selector:" use peco
 bindkey '^Z' anyframe-widget-cdr
 # C-rでコマンド履歴検索後実行
 bindkey '^R' anyframe-widget-put-history
+
+# --------------
+# promptの設定
+# --------------
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_DIR_HOME_BACKGROUND='yellow'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='black'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
