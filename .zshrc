@@ -2,6 +2,7 @@ if [ ! -e "${HOME}/.zplug/init.zsh" ]; then
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 source ${HOME}/.zplug/init.zsh
+source ${HOME}/.profile
 
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
