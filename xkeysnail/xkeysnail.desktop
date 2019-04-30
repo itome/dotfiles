@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=xkeysnail
+GenericName=Keymapper
+Exec=~/dotfiles/xkeysnail/autostart.sh
+X-GNOME-Autostart-enabled=true

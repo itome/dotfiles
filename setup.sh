@@ -22,4 +22,6 @@ ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
 
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 
+ln -sf ~/dotfiles/xkeysnail/xkeysnail.desktop ~/.config/autostart/xkeysnail.desktop
+
 chmod +x ~/dotfiles/commands/*
