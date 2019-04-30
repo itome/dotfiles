@@ -26,8 +26,6 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt"), {
     K("C-e"): with_mark(K("end")),
     # Newline
     K("C-m"): K("enter"),
-    # Kill line
-    K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
     # Undo
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z")
