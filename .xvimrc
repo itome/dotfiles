@@ -1,0 +1,14 @@
+" https://github.com/XVimProject/XVim/blob/master/Documents/Developers/MenuActionList.txt
+
+set clipboard+=unnamed
+set clipboard=unnamed
+
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
+noremap <C-a> ^
+noremap <C-e> $
+
+noremap <Space>R :run<CR>
+noremap ,gg :xcmenucmd Jump to Definition<CR>
+noremap ,gb :xcmenucmd Go Back<CR>
