@@ -70,7 +70,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Android Studio.app'"
+                                        "shell_command": "open -a 'Android Studio 3.5 Preview'"
                                     }
                                 ],
                                 "type": "basic"
@@ -92,6 +92,27 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Slack.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Open Xcode",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Xcode.app'"
                                     }
                                 ],
                                 "type": "basic"
