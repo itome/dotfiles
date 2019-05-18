@@ -1,5 +1,6 @@
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=$HOME/flutter/bin:$PATH
+export PATH=$HOME/flutter//bin/cache/dart-sdk/bin:$PATH
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
@@ -12,7 +13,6 @@ export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PYENV_ROOT/shims:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
-export PATH=$PATH:~/.pub-cache/bin
 export PATH=$PATH:~/.roswell/bin
 
 eval "$(pyenv init -)"
