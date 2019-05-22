@@ -31,3 +31,5 @@ eval "$(rbenv init -)"
 
 if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.bash.inc'; fi
 if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
