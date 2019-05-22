@@ -29,7 +29,7 @@ cask "karabiner"
 cask "alfred"
 cask "zeplin"
 cask "abstract"
-cask "emacs-mac-spacemacs-icon"
+cask "emacs-mac-spacemacs-icon", args: ["with-natural-title-bar"]
 cask "google-japanese-ime"
 cask "hyperswitc"
 cask "scroll-reverser"
