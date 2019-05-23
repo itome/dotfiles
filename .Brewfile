@@ -17,6 +17,7 @@ brew "libimobiledevice"
 brew "ideviceinstaller"
 brew "ios-deploy"
 brew "cocoapods"
+brew "roswell"
 
 tap "caskroom/cask"
 tap "homebrew/bundle"
