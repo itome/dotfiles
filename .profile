@@ -16,13 +16,12 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:~/.roswell/bin
 export NVM_DIR="$HOME/.nvm"
 
-if [ "$(uname)" == 'Darwin' ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 else
     echo "Your platform ($(uname -a)) is not supported."
-    exit 1
 fi
 
 eval "$(pyenv init -)"
