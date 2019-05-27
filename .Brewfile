@@ -18,6 +18,7 @@ brew "ideviceinstaller"
 brew "ios-deploy"
 brew "cocoapods"
 brew "roswell"
+brew "lazygit"
 
 tap "caskroom/cask"
 tap "homebrew/bundle"
