@@ -430,9 +430,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>761 472 445 352 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>332 571 796 486 0 0 1920 1057 </string>
+	<string>521 575 918 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 394 0 0 1920 1057 </string>
+	<string>0 0 2560 724 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1119,7 +1119,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>30</integer>
+			<integer>45</integer>
 			<key>Screen</key>
 			<integer>0</integer>
 			<key>Scrollback Lines</key>
@@ -1187,7 +1187,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.15374167195431471</real>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
@@ -1216,6 +1216,8 @@
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>580209306.91289997</real>
 	<key>OpenArrangementAtStartup</key>
@@ -1268,7 +1270,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-05-22T09:20:33Z</date>
+	<date>2019-07-03T19:03:16Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>StatusBarIcon</key>

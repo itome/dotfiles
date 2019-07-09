@@ -43,5 +43,6 @@ cask "station"
 cask "adoptopenjdk8"
 cask "1password"
 cask "sketch"
+cask "vivaldi"
 
 brew "emacs-plus", args: ["HEAD", "with-modern-icon", "with-jansson"]

@@ -46,13 +46,21 @@ setopt hist_expand # 補完時にヒストリを自動的に展開する
 setopt inc_append_history # 履歴をインクリメンタルに追加
 
 # --------------
+# pecoの設定
+# --------------
+bindkey -e
+function peco-git-checkout() {
+    git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`
+}
+zle -N peco-git-checkout
+bindkey '^X^G' peco-git-checkout
+
+# --------------
 # anyframeの設定
 # --------------
 # anyframeで明示的にpecoを使用するように定義
 zstyle ":anyframe:selector:" use peco
-# C-zでcd履歴検索後移動
-bindkey '^Z' anyframe-widget-cdr
-# C-rでコマンド履歴検索後実行
+bindkey '^X^F' anyframe-widget-cdr
 bindkey '^R' anyframe-widget-put-history
 
 # --------------
