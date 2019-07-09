@@ -12,21 +12,6 @@ define_multipurpose_modmap({
 
 # emacs-like keybindings in non-emacs applications
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt"), {
-    # Cursor
-    K("C-b"): with_mark(K("left")),
-    K("C-f"): with_mark(K("right")),
-    K("C-p"): with_mark(K("up")),
-    K("C-n"): with_mark(K("down")),
-    K("C-h"): with_mark(K("backspace")),
-    # Forward/Backward word
-    K("M-b"): with_mark(K("C-left")),
-    K("M-f"): with_mark(K("C-right")),
-    # Beginning/End of line
-    K("C-a"): with_mark(K("home")),
-    K("C-e"): with_mark(K("end")),
     # Newline
-    K("C-m"): K("enter"),
-    # Undo
-    K("C-slash"): [K("C-z"), set_mark(False)],
-    K("C-Shift-ro"): K("C-z")
+    K("C-m"): K("enter")
 }, "Emacs-like keys")
