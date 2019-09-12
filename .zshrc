@@ -63,8 +63,9 @@ ff() {
     fi
 }
 zle -N ff
+bindkey '^x^f' ff
 
-# checkout git branch
+# ff git branch
 gc() {
     local branches branch
     branches=$(git --no-pager branch -vv) &&
