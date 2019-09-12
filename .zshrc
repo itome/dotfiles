@@ -6,7 +6,7 @@ source ${HOME}/.profile
 
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
-zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug 'mollifier/anyframe'
 zplug 'wfxr/forgit'
 
