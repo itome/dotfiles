@@ -32,3 +32,9 @@ if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.ba
 if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s04407/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04407/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s04407/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04407/google-cloud-sdk/completion.zsh.inc'; fi

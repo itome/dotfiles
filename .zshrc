@@ -6,9 +6,9 @@ source ${HOME}/.profile
 
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
-zplug "peco/peco", as:command, from:gh-r
+zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
 zplug 'mollifier/anyframe'
-zplug 'bhilburn/powerlevel9k', use:powerlevel9k.zsh-theme
+zplug 'wfxr/forgit'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -45,29 +45,8 @@ setopt hist_expire_dups_first # 古い履歴を削除する必要がある場合
 setopt hist_expand # 補完時にヒストリを自動的に展開する
 setopt inc_append_history # 履歴をインクリメンタルに追加
 
-# --------------
-# pecoの設定
-# --------------
-bindkey -e
-function peco-git-checkout() {
-    git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`
-}
-zle -N peco-git-checkout
-bindkey '^X^G' peco-git-checkout
 
 # --------------
-# anyframeの設定
+# propmt
 # --------------
-# anyframeで明示的にpecoを使用するように定義
-zstyle ":anyframe:selector:" use peco
-bindkey '^X^F' anyframe-widget-cdr
-bindkey '^R' anyframe-widget-put-history
-
-# --------------
-# promptの設定
-# --------------
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_DIR_HOME_BACKGROUND='yellow'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
+eval "$(starship init zsh)"

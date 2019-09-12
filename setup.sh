@@ -6,6 +6,7 @@ ln -sf ~/dotfiles/.xvimrc ~/.xvimrc
 ln -sf ~/dotfiles/karabiner ~/.config/karabiner
 ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 
 if [ "$(uname)" == 'Darwin' ]; then
     ln -sf ~/dotfiles/.Brewfile ~/.Brewfile

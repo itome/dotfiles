@@ -19,6 +19,7 @@ brew "ios-deploy"
 brew "cocoapods"
 brew "roswell"
 brew "lazygit"
+brew "starship"
 
 tap "caskroom/cask"
 tap "homebrew/bundle"
