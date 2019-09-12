@@ -10,5 +10,6 @@ noremap <C-a> ^
 noremap <C-e> $
 
 noremap <Space>R :run<CR>
+noremap <Space>ff :xccmd openQuickly<Cr>
 noremap ,gg :xcmenucmd Jump to Definition<CR>
 noremap ,gb :xcmenucmd Go Back<CR>
