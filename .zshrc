@@ -65,6 +65,12 @@ ff() {
 zle -N ff
 bindkey '^x^f' ff
 
+# fh - repeat history
+h() {
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+}
+zle -N h
+
 # ff git branch
 gc() {
     local branches branch
