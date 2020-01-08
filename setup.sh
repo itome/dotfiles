@@ -4,7 +4,7 @@ ln -sf ~/dotfiles/.profile ~/.profile
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/.xvimrc ~/.xvimrc
-ln -sf ~/dotfiles/karabiner ~/.config/karabiner.json
+ln -sf ~/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -sf ~/dotfiles/peco-config.json ~/.config/peco/config.json
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
