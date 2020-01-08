@@ -49,3 +49,6 @@
     std = !git stl | xargs git stash drop
 [ghq]
     root = ~/src
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/

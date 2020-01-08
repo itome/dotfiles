@@ -21,7 +21,6 @@ brew "roswell"
 brew "lazygit"
 brew "starship"
 
-tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "d12frosted/emacs-plus"
@@ -44,6 +43,5 @@ cask "station"
 cask "adoptopenjdk8"
 cask "1password"
 cask "sketch"
-cask "vivaldi"
 
-brew "emacs-plus", args: ["HEAD", "with-modern-icon", "with-jansson"]
+brew "emacs", args: ["HEAD", "with-jansson"]
