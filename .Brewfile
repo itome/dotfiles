@@ -43,5 +43,6 @@ cask "station"
 cask "adoptopenjdk8"
 cask "1password"
 cask "sketch"
+cask "visual-studio-code"
 
 brew "emacs", args: ["HEAD", "with-jansson"]
