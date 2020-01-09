@@ -20,7 +20,6 @@ brew "cocoapods"
 brew "roswell"
 brew "lazygit"
 brew "starship"
-brew "emacs", args: ["HEAD"]
 
 tap "homebrew/bundle"
 tap "homebrew/core"
@@ -45,3 +44,4 @@ cask "adoptopenjdk8"
 cask "1password"
 cask "sketch"
 cask "visual-studio-code"
+cask "emacs", args: ["HEAD"]
