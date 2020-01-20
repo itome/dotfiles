@@ -20,6 +20,8 @@ brew "cocoapods"
 brew "roswell"
 brew "lazygit"
 brew "starship"
+brew "ispell"
+brew "aspell"
 brew "emacs", args: ["HEAD"]
 
 tap "homebrew/bundle"
