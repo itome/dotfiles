@@ -1,4 +1,10 @@
 cask_args appdir: "/Applications"
+  
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "d12frosted/emacs-plus"
+tap "AdoptOpenJDK/openjdk"
+tap "d12frosted/emacs-plus"
 
 brew "git"
 brew "ripgrep"
@@ -20,11 +26,10 @@ brew "cocoapods"
 brew "roswell"
 brew "lazygit"
 brew "starship"
-
-tap "homebrew/bundle"
-tap "homebrew/core"
-tap "d12frosted/emacs-plus"
-tap "AdoptOpenJDK/openjdk"
+brew "ispell"
+brew "aspell"
+brew "carthage"
+brew "emacs-plus", args: ["HEAD", "with-jansson", "with-no-titlebar"]
 
 cask "google-chrome"
 cask "slack"
@@ -42,6 +47,3 @@ cask "scroll-reverser"
 cask "station"
 cask "adoptopenjdk8"
 cask "1password"
-cask "sketch"
-cask "visual-studio-code"
-cask "emacs", args: ["HEAD"]
