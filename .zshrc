@@ -63,7 +63,7 @@ ff() {
     fi
 }
 zle -N ff
-bindkey '^x^f' ff
+bindkey '^x^x' ff
 
 # fh - repeat history
 h() {
