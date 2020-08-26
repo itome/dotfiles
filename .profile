@@ -13,8 +13,11 @@ export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PYENV_ROOT/shims:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/src/bin:$PATH
 export PATH=$PATH:~/.roswell/bin
+export PATH=$PATH:~/.local/bin
 export NVM_DIR="$HOME/.nvm"
+export GO111MODULE=on
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
