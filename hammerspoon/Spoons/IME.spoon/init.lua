@@ -26,7 +26,6 @@ function obj:init()
           self.commandOptionKeyTimer:start()
         else
           if self.sendKana then
-            print('kana')
             hs.eventtap.keyStroke({}, kana, 0)
           end
         end
@@ -36,7 +35,6 @@ function obj:init()
           self.sendEisuu = true
           self.commandOptionKeyTimer:start()
         else
-          print('eisuu')
           if self.sendEisuu then
             hs.eventtap.keyStroke({}, eisuu, 0)
           end
