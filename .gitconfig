@@ -1,6 +1,6 @@
 [user]
-    name = Takeshi Tsukamoto
-    email = itometeam@gmail.com
+	name = Takeshi Tsukamoto
+	email = dev@itome.team
 [core]
     ignorecase = false
     quotepath = false
