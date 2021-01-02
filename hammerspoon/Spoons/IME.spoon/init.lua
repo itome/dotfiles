@@ -1,8 +1,8 @@
 local eisuu = 102
 local kana = 104
 
-local leftCmd = 54
-local rightCmd = 55
+local leftCmd = 55
+local rightCmd = 54
 
 local obj={}
 obj.__index = obj
