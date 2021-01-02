@@ -8,6 +8,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/dotfiles/commands
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/opt/local:$PATH
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 export PATH=$PYENV_ROOT/shims:$PATH
@@ -16,28 +17,17 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$GOPATH/src/bin:$PATH
 export PATH=$PATH:~/.roswell/bin
 export PATH=$PATH:~/.local/bin
-export NVM_DIR="$HOME/.nvm"
+export PATH="$WASMTIME_HOME/bin:$PATH"
+export PATH=$PATH:/opt/homebrew/bin
+export WASMTIME_HOME="$HOME/.wasmtime"
 export GO111MODULE=on
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-else
-    echo "Your platform ($(uname -a)) is not supported."
-fi
-
-eval "$(pyenv init -)"
-eval "$(rbenv init -)"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.bash.inc'; fi
-if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi
-
-export PATH="$HOME/.cargo/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s04407/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s04407/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/itome/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/s04407/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s04407/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/completion.zsh.inc'; fi

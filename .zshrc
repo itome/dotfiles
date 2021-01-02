@@ -7,8 +7,6 @@ source ${HOME}/.profile
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug 'mollifier/anyframe'
-zplug 'wfxr/forgit'
 zplug "rupa/z", use:z.sh
 
 if ! zplug check --verbose; then
@@ -46,14 +44,13 @@ setopt hist_expire_dups_first # 古い履歴を削除する必要がある場合
 setopt hist_expand # 補完時にヒストリを自動的に展開する
 setopt inc_append_history # 履歴をインクリメンタルに追加
 
-
 # --------------
 # propmt
 # --------------
 eval "$(starship init zsh)"
 
 # cd in history
-ff() {
+fd() {
     local res=$(z | sort -rn | cut -c 12- | fzf)
     if [ -n "$res" ]; then
         BUFFER+="cd $res"
@@ -62,39 +59,68 @@ ff() {
         return 1
     fi
 }
-zle -N ff
-bindkey '^x^x' ff
+zle -N fd
+bindkey '^x^f' fd
 
 # fh - repeat history
 h() {
-    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
 }
 zle -N h
+bindkey '^x^x' h
 
-# ff git branch
-gc() {
-    local branches branch
-    branches=$(git --no-pager branch -vv) &&
-        branch=$(echo "$branches" | fzf +m) &&
-        git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+# Install (one or multiple) selected application(s)
+# using "brew search" as source input
+# mnemonic [B]rew [I]nstall [P]lugin
+bip() {
+    local inst=$(brew search | fzf -m)
+
+    if [[ $inst ]]; then
+        for prog in $(echo $inst);
+        do; brew install $prog; done;
+    fi
 }
-zle -N gc
+# Update (one or multiple) selected application(s)
+# mnemonic [B]rew [U]pdate [P]lugin
+bup() {
+    local upd=$(brew leaves | fzf -m)
 
-# checkout git branch
-gbd() {
-    local branches branch
-    branches=$(git --no-pager branch -vv) &&
-        branch=$(echo "$branches" | fzf +m) &&
-        git branch -D $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+    if [[ $upd ]]; then
+        for prog in $(echo $upd);
+        do; brew upgrade $prog; done;
+    fi
 }
-zle -N gbd
+# Delete (one or multiple) selected application(s)
+# mnemonic [B]rew [C]lean [P]lugin (e.g. uninstall)
+bcp() {
+    local uninst=$(brew leaves | fzf -m)
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
+    if [[ $uninst ]]; then
+        for prog in $(echo $uninst);
+        do; brew uninstall $prog; done;
+    fi
+}
 
-# The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
+## Homebrew Apple silicon
+typeset -U path PATH
+path=(
+	  /opt/homebrew/bin(N-/)
+	  /usr/local/bin(N-/)
+	  $path
+)
 
-export WASMTIME_HOME="$HOME/.wasmtime"
+if [[ "${(L)$( uname -s )}" == darwin ]] && (( $+commands[arch] )); then
+	  alias brew="arch -arch x86_64 /usr/local/bin/brew"
+	  alias x64='exec arch -arch x86_64 "$SHELL"'
+	  alias a64='exec arch -arch arm64e "$SHELL"'
+	  switch-arch() {
+		    if  [[ "$(uname -m)" == arm64 ]]; then
+			      arch=x86_64
+		    elif [[ "$(uname -m)" == x86_64 ]]; then
+			      arch=arm64e
+		    fi
+		    exec arch -arch $arch "$SHELL"
+	  }
+fi
 
-export PATH="$WASMTIME_HOME/bin:$PATH"
+setopt magic_equal_subst

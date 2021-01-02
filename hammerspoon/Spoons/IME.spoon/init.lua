@@ -1,6 +1,9 @@
 local eisuu = 102
 local kana = 104
 
+local leftCmd = 54
+local rightCmd = 55
+
 local obj={}
 obj.__index = obj
 obj.name = 'IME'
@@ -19,6 +22,7 @@ function obj:init()
 
   self.commandOptionTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged},
     function(event)
+      local keyCode = event:getKeyCode()
       local newModifiers = event:getFlags()
       if not (self.lastModifiers['alt'] == newModifiers['alt']) then
         if not self.lastModifiers['alt'] then
@@ -32,11 +36,17 @@ function obj:init()
         self.lastModifiers = newModifiers
       elseif not (self.lastModifiers['cmd'] == newModifiers['cmd']) then
         if not self.lastModifiers['cmd'] then
-          self.sendEisuu = true
+          if keyCode == leftCmd then
+            self.sendEisuu = true
+          else
+            self.sendKana = true
+          end
           self.commandOptionKeyTimer:start()
         else
           if self.sendEisuu then
             hs.eventtap.keyStroke({}, eisuu, 0)
+          elseif self.sendKana then
+            hs.eventtap.keyStroke({}, kana, 0)
           end
           self.commandOptionKeyTimer:stop()
         end
