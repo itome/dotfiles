@@ -124,3 +124,7 @@ if [[ "${(L)$( uname -s )}" == darwin ]] && (( $+commands[arch] )); then
 fi
 
 setopt magic_equal_subst
+
+# Wasmer
+export WASMER_DIR="/Users/itome/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

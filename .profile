@@ -17,6 +17,7 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$GOPATH/src/bin:$PATH
 export PATH=$PATH:~/.roswell/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH="$WASMTIME_HOME/bin:$PATH"
 export PATH=$PATH:/opt/homebrew/bin
 export WASMTIME_HOME="$HOME/.wasmtime"
