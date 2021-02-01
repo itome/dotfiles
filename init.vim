@@ -72,13 +72,13 @@ Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-css'
 Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'html'] }
+
 Plug 'leafgarland/typescript-vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'wadackel/nvim-syntax-info'
-Plug 'wadackel/vim-dogrun'
+Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 
@@ -106,14 +106,14 @@ function! s:check_back_space() abort
 endfunction
 
 syntax on
-colorscheme dogrun
+colorscheme onedark
 
 " fern.vim
 let g:fern#renderer = "nerdfont"
 
 " lightline
 let g:lightline = {
-\ 'colorscheme': 'dogrun',
+\ 'colorscheme': 'onedark',
 \ 'active': {
 \   'left': [['mode', 'paste'],
 \             ['branch', 'readonly', 'filename']],
@@ -161,5 +161,8 @@ noremap <silent> <leader><leader> :Commands<CR>
 nnoremap <silent> <leader>ft :Fern . -width=40 -drawer -reveal=% -toggle<CR>
 
 noremap <silent> <leader>ww <c-w>w
+noremap <silent> <leader>wd <c-w>q
+noremap <silent> <leader>w/ :vsplit<CR>
+noremap <silent> <leader>w- :split<CR>
 noremap <silent> <leader>fs :wa<CR>
 noremap <silent> <leader>qq :qa!<CR>
