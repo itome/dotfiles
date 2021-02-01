@@ -91,15 +91,8 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'luochen1990/rainbow'
 
 Plug 'tpope/vim-fugitive'
+Plug 'mattn/vim-goimports'
 call plug#end()
-
-" GitGutter
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_modified_removed = '•'
-
 
 " rainbow
 let g:rainbow_active = 1
