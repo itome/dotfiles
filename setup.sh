@@ -1,6 +1,7 @@
 #!/bin/sh
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/karabiner
+mkdir -p ~/.config/nvim
 ln -sf ~/dotfiles/.profile ~/.profile
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
@@ -10,6 +11,7 @@ ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -sf ~/dotfiles/hammerspoon/ ~/.hammerspoon
+ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
 
 if [ "$(uname)" == 'Darwin' ]; then
     ln -sf ~/dotfiles/.Brewfile ~/.Brewfile
