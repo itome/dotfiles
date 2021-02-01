@@ -4,6 +4,9 @@
   "diagnostic.warningSign": "◉",
   "diagnostic.infoSign": "◉",
   "diagnostic.hintSign": "◉",
+  "tsserver.trace.server": "verbose",
+  "tsserver.log": "verbose",
+  "tsserver.maxTsServerMemory": 6000,
   "languageserver": {
     "golang": {
       "command": "gopls",
