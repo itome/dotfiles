@@ -17,6 +17,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,ico-2022-jp,sjis,euc-jp,latin1
 set completeopt=menuone,noinsert
+set nohls
 set autoread
 set incsearch
 set formatoptions+=mM
@@ -67,7 +68,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
-Plug 'cocopon/iceberg.vim'
+Plug 'wadackel/vim-dogrun'
 Plug 'itchyny/lightline.vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -114,7 +115,7 @@ let g:coc_global_extensions = [
 
 syntax enable
 filetype plugin indent on
-colorscheme iceberg
+colorscheme dogrun
 
 " git gutter
 let g:gitgutter_sign_added = '| '
@@ -135,7 +136,7 @@ let g:auto_save = 1
 
 " lightline
 let g:lightline = {
-\ 'colorscheme': 'iceberg',
+\ 'colorscheme': 'dogrun',
 \ 'active': {
 \   'left': [['mode', 'paste'],
 \             ['branch', 'readonly', 'filename']],
