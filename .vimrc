@@ -31,8 +31,12 @@ set nowritebackup
 set number
 set tabstop=4
 set shiftwidth=2
+set autoindent
+set smartindent
+set expandtab
 set clipboard=unnamed
 set laststatus=2
+set ambiwidth=double
 set wildmenu
 set wildmode=longest,full
 set noshowmode
@@ -40,12 +44,10 @@ set iminsert=0
 set imsearch=0
 set noimdisable
 set noimcmdline
-set nowrap
 set backspace=indent,eol,start
 set lazyredraw
 set shortmess& shortmess+=I
 set vb t_vb=
-set signcolumn=yes
 set novisualbell
 set directory=~/.vim/swap
 if ! isdirectory($HOME.'/.vim/swap')
@@ -62,30 +64,24 @@ Plug 'neoclide/coc-css'
 
 Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'html'] }
 Plug 'leafgarland/typescript-vim'
-Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'ryanoasis/vim-devicons'
-
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-renderer-devicons.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 
 Plug 'luochen1990/rainbow'
 
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'vim-scripts/vim-auto-save'
-Plug 'rust-lang/rust.vim'
+Plug 'mattn/vim-goimports'
 call plug#end()
 
 " rainbow
@@ -97,41 +93,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_global_extensions = [
-      \  'coc-flutter'
-      \, 'coc-json'
-      \, 'coc-html'
-      \, 'coc-css'
-      \, 'coc-tsserver'
-      \, 'coc-go'
-      \, 'coc-rust-analyzer'
-      \, 'coc-snippets'
-      \, 'coc-vetur'
-      \, 'coc-clangd'
-      \, 'coc-toml'
-      \, 'coc-tailwindcss'
-      \ ]
-
-syntax enable
-filetype plugin indent on
+syntax on
 colorscheme onedark
 
-" git gutter
-let g:gitgutter_sign_added = '| '
-let g:gitgutter_sign_modified = '| '
-let g:gitgutter_sign_removed = '| '
-let g:gitgutter_sign_removed_first_line = '| '
-let g:gitgutter_sign_removed_above_and_below = '| '
-let g:gitgutter_sign_modified_removed = '| '
-
 " fern.vim
-let g:fern#renderer = "devicons"
-
-" fzf_preview
-let g:fzf_preview_use_dev_icons = 0
-
-" auto save
-let g:auto_save = 1
+let g:fern#renderer = "nerdfont"
 
 " lightline
 let g:lightline = {
@@ -165,9 +131,6 @@ let g:lightline = {
 \ 'subseparator': { 'left': '❯', 'right': '❮'}
 \ }
 
-" Golang
-au FileType go setlocal sw=4 ts=4 sts=4 noet
-
 " Keymap
 let mapleader = "\<Space>"
 nmap <silent> <leader>aa  <Plug>(coc-codeaction)
@@ -180,12 +143,12 @@ nmap <silent> <leader>gi  <Plug>(coc-implementation)
 nmap <silent> <leader>gt  <Plug>(coc-type-definition)
 nmap <silent> <leader>gr  <Plug>(coc-references)
 
-noremap <silent> <leader>fh  :<C-u>FzfPreviewMruFiles<CR>
-noremap <silent> <leader>fg  :<C-u>FzfPreviewGitFiles<CR>
-noremap <silent> <leader>ff  :<C-u>FzfPreviewProjectFiles<CR>
-noremap <silent> <leader>bb  :<C-u>FzfPreviewAllBuffers<CR>
-noremap <silent> <leader><leader> :<C-u>FzfPreviewCommandPalette<CR>
-nnoremap <silent> <leader>el    :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+noremap <silent> <leader>fg  :GFiles<CR>
+noremap <silent> <leader>ff  :Files .<CR>
+noremap <silent> <leader>bh  :History<CR>
+noremap <silent> <leader>bb  :Buffers<CR>
+noremap <silent> <leader>/   :Rg<CR>
+noremap <silent> <leader><leader> :Commands<CR>
 
 nnoremap <silent> <leader>ft :Fern . -width=40 -drawer -reveal=% -toggle<CR>
 
@@ -195,5 +158,3 @@ noremap <silent> <leader>w/ :vsplit<CR>
 noremap <silent> <leader>w- :split<CR>
 noremap <silent> <leader>fs :wa<CR>
 noremap <silent> <leader>qq :qa!<CR>
-inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
-inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"

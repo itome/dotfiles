@@ -12,6 +12,7 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -sf ~/dotfiles/hammerspoon/ ~/.hammerspoon
 ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 if [ "$(uname)" == 'Darwin' ]; then
