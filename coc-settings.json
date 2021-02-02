@@ -4,6 +4,7 @@
   "coc.preferences.formatOnType": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "float",
+  "suggest.keepCompleteopt": true,
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -36,9 +37,6 @@
   "diagnostic.warningSign": "◉",
   "diagnostic.infoSign": "◉",
   "diagnostic.hintSign": "◉",
-  "tsserver.trace.server": "verbose",
-  "tsserver.log": "verbose",
-  "tsserver.maxTsServerMemory": 6000,
   "languageserver": {
     "golang": {
       "command": "gopls",

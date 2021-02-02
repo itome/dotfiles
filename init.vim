@@ -16,7 +16,7 @@ set shortmess+=c
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,ico-2022-jp,sjis,euc-jp,latin1
-set completeopt=menuone
+set completeopt=menuone,noinsert
 set autoread
 set incsearch
 set formatoptions+=mM
@@ -67,7 +67,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
-Plug 'joshdick/onedark.vim'
+Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -114,7 +114,7 @@ let g:coc_global_extensions = [
 
 syntax enable
 filetype plugin indent on
-colorscheme onedark
+colorscheme iceberg
 
 " git gutter
 let g:gitgutter_sign_added = '| '
@@ -135,7 +135,7 @@ let g:auto_save = 1
 
 " lightline
 let g:lightline = {
-\ 'colorscheme': 'onedark',
+\ 'colorscheme': 'iceberg',
 \ 'active': {
 \   'left': [['mode', 'paste'],
 \             ['branch', 'readonly', 'filename']],
@@ -170,15 +170,23 @@ au FileType go setlocal sw=4 ts=4 sts=4 noet
 
 " Keymap
 let mapleader = "\<Space>"
+inoremap <C-d> <Del>
+inoremap <C-h> <BS>
+inoremap <C-a> <home>
+inoremap <C-e> <End>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-f> <right>
+inoremap <C-b> <left>
 nmap <silent> <leader>aa  <Plug>(coc-codeaction)
 nmap <silent> <leader>=   <Plug>(coc-format)
 xmap <silent> <leader>=   <Plug>(coc-format-selected)
 nmap <silent> <leader>rr  <Plug>(coc-rename)
 nmap <silent> <leader>gg  <Plug>(coc-definition)
 nmap <silent> <leader>gd  <Plug>(coc-declaration)
-nmap <silent> <leader>gi  <Plug>(coc-implementation)
-nmap <silent> <leader>gt  <Plug>(coc-type-definition)
-nmap <silent> <leader>gr  <Plug>(coc-references)
+nnoremap <silent> <leader>gr :<C-u>CocCommand fzf-preview.CocReferences<CR>
+nnoremap <silent> <leader>gt :<C-u>CocCommand fzf-preview.CocTypeDefinitions<CR>
+nnoremap <silent> <leader>gi :<C-u>CocCommand fzf-preview.CocImplementations<CR>
 
 noremap <silent> <leader>fh  :<C-u>FzfPreviewMruFiles<CR>
 noremap <silent> <leader>fg  :<C-u>FzfPreviewGitFiles<CR>
@@ -187,9 +195,13 @@ noremap <silent> <leader>bb  :<C-u>FzfPreviewAllBuffers<CR>
 noremap <silent> <leader><leader> :<C-u>FzfPreviewCommandPalette<CR>
 nnoremap <silent> <leader>el    :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 
-nnoremap <silent> <leader>ft :Fern . -width=40 -drawer -reveal=% -toggle<CR>
+nnoremap <silent> <leader>ft :Fern . -width=40 -drawer -reveal=%<CR>
 
 noremap <silent> <leader>ww <c-w>w
+noremap <silent> <leader>wh <c-w>h
+noremap <silent> <leader>wl <c-w>l
+noremap <silent> <leader>wj <c-w>j
+noremap <silent> <leader>wk <c-w>k
 noremap <silent> <leader>wd <c-w>q
 noremap <silent> <leader>w/ :vsplit<CR>
 noremap <silent> <leader>w- :split<CR>
@@ -197,3 +209,4 @@ noremap <silent> <leader>fs :wa<CR>
 noremap <silent> <leader>qq :qa!<CR>
 inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
