@@ -14,6 +14,7 @@ ln -sf ~/dotfiles/hammerspoon/ ~/.hammerspoon
 ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 if [ "$(uname)" == 'Darwin' ]; then
     ln -sf ~/dotfiles/.Brewfile ~/.Brewfile
@@ -23,5 +24,3 @@ else
     echo "Your platform ($(uname -a)) is not supported."
     exit 1
 fi
-
-chmod +x ~/dotfiles/commands/*

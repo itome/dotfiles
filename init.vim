@@ -69,6 +69,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'wadackel/vim-dogrun'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -133,6 +134,16 @@ let g:fzf_preview_use_dev_icons = 0
 
 " auto save
 let g:auto_save = 1
+
+" nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+}
+EOF
 
 " lightline
 let g:lightline = {
