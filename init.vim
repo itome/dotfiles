@@ -116,7 +116,6 @@ let g:coc_global_extensions = [
       \ ]
 
 syntax enable
-filetype plugin indent on
 colorscheme dogrun
 
 " git gutter
