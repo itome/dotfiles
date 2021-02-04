@@ -31,7 +31,8 @@ set hidden
 set nobackup
 set nowritebackup
 set number
-set tabstop=4
+set expandtab
+set tabstop=2
 set shiftwidth=2
 set clipboard=unnamed
 set laststatus=2
@@ -89,6 +90,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'vim-scripts/vim-auto-save'
 Plug 'rust-lang/rust.vim'
+Plug 'uarun/vim-protobuf'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " rainbow
@@ -199,6 +202,7 @@ nmap <silent> <leader>gd  <Plug>(coc-declaration)
 nnoremap <silent> <leader>gr :<C-u>CocCommand fzf-preview.CocReferences<CR>
 nnoremap <silent> <leader>gt :<C-u>CocCommand fzf-preview.CocTypeDefinitions<CR>
 nnoremap <silent> <leader>gi :<C-u>CocCommand fzf-preview.CocImplementations<CR>
+nnoremap <silent> <leader>gb :<C-u>CocCommand fzf-preview.Jumps<CR>
 
 noremap <silent> <leader>fh  :<C-u>FzfPreviewMruFiles<CR>
 noremap <silent> <leader>fg  :<C-u>FzfPreviewGitFiles<CR>
