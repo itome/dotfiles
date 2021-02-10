@@ -90,7 +90,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'vim-scripts/vim-auto-save'
 Plug 'rust-lang/rust.vim'
 Plug 'uarun/vim-protobuf'
 Plug 'tpope/vim-surround'
