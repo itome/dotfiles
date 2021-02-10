@@ -1,6 +1,16 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.preferences.formatOnSaveFiletypes": [],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "typescriptreact",
+    "typescript",
+    "javascript",
+    "go",
+    "rust",
+    "dart",
+    "json"
+  ],
   "coc.preferences.formatOnType": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "float",
@@ -39,13 +49,21 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ]
     },
     "rust": {
       "command": "ra_lsp_server",
-      "filetypes": ["rust"],
-      "rootPatterns": ["Cargo.toml"]
+      "filetypes": [
+        "rust"
+      ],
+      "rootPatterns": [
+        "Cargo.toml"
+      ]
     }
   }
 }
