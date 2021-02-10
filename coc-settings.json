@@ -4,7 +4,6 @@
   "coc.preferences.formatOnType": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "float",
-  "suggest.keepCompleteopt": true,
   "suggest.noselect": false,
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -48,6 +47,5 @@
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
     }
-  },
-  "css.validate": false
+  }
 }

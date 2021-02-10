@@ -12,6 +12,7 @@ let g:loaded_vimballPlugin = 1
 " Basic preferences
 set termguicolors
 set updatetime=300
+set ttimeoutlen=10
 set cmdheight=2
 set shortmess+=c
 set encoding=utf-8
@@ -63,18 +64,18 @@ Plug 'neoclide/coc-json'
 Plug 'neoclide/coc-html'
 Plug 'neoclide/coc-css'
 
-Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'typescript.tsx', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'html'] }
-Plug 'leafgarland/typescript-vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'wadackel/vim-dogrun'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
-
-Plug 'jiangmiao/auto-pairs'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -84,6 +85,7 @@ Plug 'lambdalisue/fern-renderer-devicons.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 
 Plug 'luochen1990/rainbow'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -109,6 +111,7 @@ let g:coc_global_extensions = [
       \, 'coc-html'
       \, 'coc-css'
       \, 'coc-tsserver'
+      \, 'coc-eslint'
       \, 'coc-go'
       \, 'coc-rust-analyzer'
       \, 'coc-snippets'
@@ -116,6 +119,7 @@ let g:coc_global_extensions = [
       \, 'coc-clangd'
       \, 'coc-toml'
       \, 'coc-tailwindcss'
+      \, 'coc-pairs'
       \ ]
 
 syntax enable
@@ -141,7 +145,7 @@ let g:auto_save = 1
 " nvim-treesitter
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   highlight = { enable = true },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -183,12 +187,14 @@ let g:lightline = {
 " Golang
 au FileType go setlocal sw=4 ts=4 sts=4 noet
 
+" Prettier
+au FileType typescript,typescriptreact,javascript,css,html nmap <silent> <leader>= <Plug>(Prettier)
+
+" Dart
+let g:dart_style_guide = 2
+
 " Keymap
 let mapleader = "\<Space>"
-inoremap <C-d> <Del>
-inoremap <C-h> <BS>
-inoremap <C-a> <home>
-inoremap <C-e> <End>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-f> <right>
@@ -208,6 +214,7 @@ noremap <silent> <leader>fh  :<C-u>FzfPreviewMruFiles<CR>
 noremap <silent> <leader>fg  :<C-u>FzfPreviewGitFiles<CR>
 noremap <silent> <leader>ff  :<C-u>FzfPreviewProjectFiles<CR>
 noremap <silent> <leader>bb  :<C-u>FzfPreviewAllBuffers<CR>
+noremap <silent> <leader>/   :<C-u>Rg<CR>
 noremap <silent> <leader><leader> :<C-u>FzfPreviewCommandPalette<CR>
 nnoremap <silent> <leader>el    :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 
@@ -225,4 +232,3 @@ noremap <silent> <leader>fs :wa<CR>
 noremap <silent> <leader>qq :qa!<CR>
 inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
