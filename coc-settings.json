@@ -46,6 +46,8 @@
   "diagnostic.warningSign": "◉",
   "diagnostic.infoSign": "◉",
   "diagnostic.hintSign": "◉",
+  "typescript.format.enabled": false,
+  "javascript.format.enabled": false,
   "languageserver": {
     "golang": {
       "command": "gopls",

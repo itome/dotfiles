@@ -11,7 +11,7 @@ let g:loaded_vimballPlugin = 1
 
 " Basic preferences
 set termguicolors
-set updatetime=300
+set updatetime=100
 set ttimeoutlen=10
 set cmdheight=2
 set shortmess+=c
@@ -74,8 +74,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'wadackel/vim-dogrun'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/lightline.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -87,7 +87,7 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'luochen1990/rainbow'
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'tpope/vim-fugitive'
+Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'airblade/vim-gitgutter'
 
 Plug 'rust-lang/rust.vim'
@@ -141,16 +141,6 @@ let g:fzf_preview_use_dev_icons = 0
 " auto save
 let g:auto_save = 1
 
-" nvim-treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = { enable = true },
-  incremental_selection = { enable = true },
-  textobjects = { enable = true },
-}
-EOF
-
 " lightline
 let g:lightline = {
 \ 'colorscheme': 'dogrun',
@@ -182,6 +172,17 @@ let g:lightline = {
 \ 'separator': { 'left': '', 'right': ''},
 \ 'subseparator': { 'left': '❯', 'right': '❮'}
 \ }
+
+" hightlight
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {  },  -- list of language that will be disabled
+  },
+}
+EOF
 
 " Golang
 au FileType go setlocal sw=4 ts=4 sts=4 noet
@@ -216,6 +217,7 @@ noremap <silent> <leader>bb  :<C-u>FzfPreviewAllBuffers<CR>
 noremap <silent> <leader>/   :<C-u>Rg<CR>
 noremap <silent> <leader><leader> :<C-u>FzfPreviewCommandPalette<CR>
 nnoremap <silent> <leader>el    :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+noremap <silent> <leader>gs  :<C-u>LazyGit<CR>
 
 nnoremap <silent> <leader>ft :Fern . -width=40 -drawer -reveal=%<CR>
 
