@@ -68,31 +68,3 @@ h() {
 }
 zle -N h
 bindkey '^x^x' h
-
-## Homebrew Apple silicon
-typeset -U path PATH
-path=(
-	  /opt/homebrew/bin(N-/)
-	  /usr/local/bin(N-/)
-	  $path
-)
-
-if [[ "${(L)$( uname -s )}" == darwin ]] && (( $+commands[arch] )); then
-	  alias brew="arch -arch x86_64 /usr/local/bin/brew"
-	  alias x64='exec arch -arch x86_64 "$SHELL"'
-	  alias a64='exec arch -arch arm64e "$SHELL"'
-	  switch-arch() {
-		    if  [[ "$(uname -m)" == arm64 ]]; then
-			      arch=x86_64
-		    elif [[ "$(uname -m)" == x86_64 ]]; then
-			      arch=arm64e
-		    fi
-		    exec arch -arch $arch "$SHELL"
-	  }
-fi
-
-setopt magic_equal_subst
-
-# Wasmer
-export WASMER_DIR="/Users/itome/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

@@ -119,6 +119,7 @@ let g:coc_global_extensions = [
       \, 'coc-toml'
       \, 'coc-tailwindcss'
       \, 'coc-pairs'
+      \, 'coc-tabnine'
       \ ]
 
 syntax enable
