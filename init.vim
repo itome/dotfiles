@@ -12,8 +12,6 @@ let g:loaded_vimballPlugin = 1
 " Basic preferences
 set termguicolors
 set updatetime=100
-set ttimeoutlen=10
-set cmdheight=2
 set shortmess+=c
 set encoding=utf-8
 set fileencoding=utf-8
@@ -126,6 +124,7 @@ syntax enable
 colorscheme dogrun
 
 " git gutter
+let g:gitgutter_realtime = 1
 let g:gitgutter_sign_added = '| '
 let g:gitgutter_sign_modified = '| '
 let g:gitgutter_sign_removed = '| '

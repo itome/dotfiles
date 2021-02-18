@@ -15,6 +15,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.hoverTarget": "float",
   "suggest.noselect": false,
+  "suggest.removeDuplicateItems": true,
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
     "method": "\uf6a6",
