@@ -14,8 +14,6 @@ set termguicolors
 set updatetime=100
 set shortmess+=c
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,cp932,ico-2022-jp,sjis,euc-jp,latin1
 set completeopt=menuone,noinsert
 set nohls
 set autoread
@@ -50,17 +48,10 @@ set vb t_vb=
 set signcolumn=yes
 set novisualbell
 set directory=~/.vim/swap
-if ! isdirectory($HOME.'/.vim/swap')
-  call mkdir($HOME.'/.vim/swap', 'p')
-endif
+call mkdir($HOME.'/.vim/swap', 'p')
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-yaml'
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc-html'
-Plug 'neoclide/coc-css'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'HerringtonDarkholme/yats.vim'
@@ -69,11 +60,9 @@ Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 
 Plug 'wadackel/vim-dogrun'
 Plug 'itchyny/lightline.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -90,7 +79,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'rust-lang/rust.vim'
 Plug 'uarun/vim-protobuf'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 call plug#end()
 
 " coc
@@ -115,6 +104,8 @@ let g:coc_global_extensions = [
       \, 'coc-tailwindcss'
       \, 'coc-pairs'
       \, 'coc-tabnine'
+      \, 'coc-yaml'
+      \, 'coc-fzf-preview'
       \ ]
 
 syntax enable
@@ -170,22 +161,11 @@ let g:lightline = {
 \ 'subseparator': { 'left': '❯', 'right': '❮'}
 \ }
 
-" hightlight
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {  },  -- list of language that will be disabled
-  },
-}
-EOF
-
 " Golang
 au FileType go setlocal sw=4 ts=4 sts=4 noet
 
 " Prettier
-au FileType typescript,typescriptreact,javascript,css,html nmap <silent> <leader>= <Plug>(Prettier)
+au FileType typescript,typescriptreact,javascript,css,html nmap <silent><buffer> <leader>= <Plug>(Prettier)
 
 " Dart
 let g:dart_style_guide = 2
@@ -207,12 +187,12 @@ nnoremap <silent> <leader>gt :<C-u>CocCommand fzf-preview.CocTypeDefinitions<CR>
 nnoremap <silent> <leader>gi :<C-u>CocCommand fzf-preview.CocImplementations<CR>
 nnoremap <silent> <leader>gb :<C-u>CocCommand fzf-preview.Jumps<CR>
 
-noremap <silent> <leader>fh  :<C-u>FzfPreviewMruFiles<CR>
-noremap <silent> <leader>fg  :<C-u>FzfPreviewGitFiles<CR>
-noremap <silent> <leader>ff  :<C-u>FzfPreviewProjectFiles<CR>
-noremap <silent> <leader>bb  :<C-u>FzfPreviewAllBuffers<CR>
+noremap <silent> <leader>fh  :<C-u>CocCommand fzf-preview.MruFiles<CR>
+noremap <silent> <leader>fg  :<C-u>CocCommand fzf-preview.GitFiles<CR>
+noremap <silent> <leader>ff  :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
+noremap <silent> <leader>bb  :<C-u>CocCommand fzf-preview.AllBuffers<CR>
 noremap <silent> <leader>/   :<C-u>Rg<CR>
-noremap <silent> <leader><leader> :<C-u>FzfPreviewCommandPalette<CR>
+noremap <silent> <leader><leader> :<C-u>CocCommand fzf-preview.CommandPalette<CR>
 nnoremap <silent> <leader>el    :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 noremap <silent> <leader>gs  :<C-u>LazyGit<CR>
 
