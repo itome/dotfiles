@@ -93,9 +93,6 @@ Plug 'uarun/vim-protobuf'
 Plug 'tpope/vim-surround'
 call plug#end()
 
-" rainbow
-let g:rainbow_active = 1
-
 " coc
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -132,14 +129,14 @@ let g:gitgutter_sign_removed_first_line = '| '
 let g:gitgutter_sign_removed_above_and_below = '| '
 let g:gitgutter_sign_modified_removed = '| '
 
+" rainbow
+let g:rainbow_active = 1
+
 " fern.vim
 let g:fern#renderer = "devicons"
 
 " fzf_preview
 let g:fzf_preview_use_dev_icons = 0
-
-" auto save
-let g:auto_save = 1
 
 " lightline
 let g:lightline = {
