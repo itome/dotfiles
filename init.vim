@@ -113,12 +113,12 @@ colorscheme dogrun
 
 " git gutter
 let g:gitgutter_realtime = 1
-let g:gitgutter_sign_added = '| '
-let g:gitgutter_sign_modified = '| '
-let g:gitgutter_sign_removed = '| '
-let g:gitgutter_sign_removed_first_line = '| '
-let g:gitgutter_sign_removed_above_and_below = '| '
-let g:gitgutter_sign_modified_removed = '| '
+let g:gitgutter_sign_added = '│ '
+let g:gitgutter_sign_modified = '│ '
+let g:gitgutter_sign_removed = '│ '
+let g:gitgutter_sign_removed_first_line = '│ '
+let g:gitgutter_sign_removed_above_and_below = '│ '
+let g:gitgutter_sign_modified_removed = '│ '
 
 " rainbow
 let g:rainbow_active = 1
@@ -131,34 +131,7 @@ let g:fzf_preview_use_dev_icons = 0
 
 " lightline
 let g:lightline = {
-\ 'colorscheme': 'dogrun',
-\ 'active': {
-\   'left': [['mode', 'paste'],
-\             ['branch', 'readonly', 'filename']],
-\   'right': [['lineinfo'],
-\             ['percent'],
-\             ['cocstatus', 'cocwarning', 'cocerror'],
-\             ['fileformat', 'fileencoding', 'filetype']],
-\ },
-\ 'component': {
-\   'lineinfo': '%3l:%-2v ¶',
-\ },
-\ 'component_expand': {
-\   'cocwarning': 'LightlineCocWarning',
-\   'cocerror': 'LightlineCocError',
-\ },
-\ 'component_type': {
-\   'cocwarning': 'warning',
-\   'cocerror': 'error',
-\ },
-\ 'component_function': {
-\   'filename': 'LightlineFilename',
-\   'branch': 'LightlineFugitive',
-\   'readonly': 'LightlineReadonly',
-\   'cocstatus': 'LightlineCocStatus',
-\ },
-\ 'separator': { 'left': '', 'right': ''},
-\ 'subseparator': { 'left': '❯', 'right': '❮'}
+\ 'colorscheme': 'dogrun'
 \ }
 
 " Golang
@@ -210,3 +183,4 @@ noremap <silent> <leader>fs :wa<CR>
 noremap <silent> <leader>qq :qa!<CR>
 inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
