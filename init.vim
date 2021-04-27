@@ -60,6 +60,7 @@ Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
 
 Plug 'wadackel/vim-dogrun'
 Plug 'itchyny/lightline.vim'
