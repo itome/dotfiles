@@ -149,7 +149,7 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-f> <right>
 inoremap <C-b> <left>
-nmap <silent> <leader>aa  <Plug>(coc-codeaction)
+nmap <silent> <leader>aa  <Plug>(coc-codeaction-selected)
 nmap <silent> <leader>=   <Plug>(coc-format)
 xmap <silent> <leader>=   <Plug>(coc-format-selected)
 nmap <silent> <leader>rr  <Plug>(coc-rename)
