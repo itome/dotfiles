@@ -5,6 +5,7 @@
     ignorecase = false
     quotepath = false
     safecrlf = true
+	autocrlf = input
 [alias]
     # 標準的なコマンド
     b = branch
@@ -52,3 +53,5 @@
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[pull]
+	rebase = false

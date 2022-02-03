@@ -19,10 +19,14 @@ export PATH=$PATH:~/.roswell/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH="$WASMTIME_HOME/bin:$PATH"
-export PATH=$PATH:/opt/homebrew/bin
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=$PATH:~/.emacs.d/bin
 export WASMTIME_HOME="$HOME/.wasmtime"
 export GO111MODULE=on
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -32,3 +36,5 @@ if [ -f '/Users/itome/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itome/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="/Users/itome/.local/share/solana/install/active_release/bin:$PATH"
