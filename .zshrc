@@ -44,16 +44,12 @@ setopt hist_expire_dups_first # 古い履歴を削除する必要がある場合
 setopt hist_expand # 補完時にヒストリを自動的に展開する
 setopt inc_append_history # 履歴をインクリメンタルに追加
 
-# --------------
-# propmt
-# --------------
-eval "$(starship init zsh)"
 
 # cd in history
 fd() {
-    local res=$(z | sort -rn | cut -c 12- | fzf)
+    local res=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
     if [ -n "$res" ]; then
-        BUFFER+="cd $res"
+        BUFFER+="cd $(ghq root)/$res"
         zle accept-line
     else
         return 1
@@ -64,7 +60,16 @@ bindkey '^x^f' fd
 
 # fh - repeat history
 h() {
-    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+    local res=$(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
+    if [ -n "$res" ]; then
+        BUFFER+=$res
+        zle accept-line
+    else
+        return 1
+    fi
 }
 zle -N h
 bindkey '^x^x' h
+
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"

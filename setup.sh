@@ -2,7 +2,9 @@
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/karabiner
 mkdir -p ~/.config/nvim
+mkdir -p ~/.config/git
 ln -sf ~/dotfiles/.profile ~/.profile
+ln -sf ~/dotfiles/gitignore ~/.config/git/ignore
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/.xvimrc ~/.xvimrc
