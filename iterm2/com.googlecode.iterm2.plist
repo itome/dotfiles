@@ -210,6 +210,8 @@
 		<key>Red Component</key>
 		<real>0.834716796875</real>
 	</dict>
+	<key>AutoHideTmuxClientSession</key>
+	<true/>
 	<key>Background Color</key>
 	<dict>
 		<key>Alpha Component</key>
@@ -1806,6 +1808,8 @@
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<true/>
+	<key>OpenTmuxWindowsIn</key>
+	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PointerActions</key>
