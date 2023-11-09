@@ -32,14 +32,14 @@ colors:
 
 font:
   normal:
-    family: Source Code Pro for Powerline
+    family: JetBrains Mono
     style: Regular
 
   bold:
-    family: Source Code Pro for Powerline
+    family: JetBrains Mono
     style: Bold
 
   # The italic font face
   italic:
-    family: Source Code Pro for Powerline
+    family: JetBrains Mono
     style: Italic

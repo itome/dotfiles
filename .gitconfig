@@ -5,7 +5,7 @@
     ignorecase = false
     quotepath = false
     safecrlf = true
-	autocrlf = input
+	autocrlf = false
     editor = nvim
 [ghq]
     root = ~/Projects

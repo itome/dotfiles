@@ -1,21 +1,56 @@
-if [ ! -e "${HOME}/.zplug/init.zsh" ]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
-fi
-source ${HOME}/.zplug/init.zsh
-source ${HOME}/.profile
+# --------------
+# 環境変数の設定
+# --------------
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PYENV_ROOT=$HOME/.pyenv
+export GOPATH=$HOME/go
+export WASMTIME_HOME=$HOME/.wasmtime
+export PATH=$PATH:$PYENV_ROOT/shims
+export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/dotfiles/commands
+export PATH=$PATH:$HOME/.composer/vendor/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/opt/local
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/src/bin
+export PATH=$PATH:$HOME/.roswell/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/opt/llvm/bin
+export PATH=$PATH:$WASMTIME_HOME/bin
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:$HOME/.con
+export PATH=$PATH:$HOME/.local/share/solana/install/active_release/bin
+export PATH=$PATH:/opt/homebrew/opt/llvm/bin
+export PATH=$PATH:/opt/homebrew/opt/openjdk@11/bin
+export PATH=$PATH:$HOME/.bun/bin
 
-zplug 'zsh-users/zsh-syntax-highlighting'
-zplug 'zsh-users/zsh-autosuggestions'
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-zplug "rupa/z", use:z.sh
+. "$HOME/.cargo/env"
+export GO111MODULE=on
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load --verbose
+export NVM_DIR=$HOME/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+if [ -f '/Users/itome/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -s "/Users/itome/.bun/_bun" ] && source "/Users/itome/.bun/_bun"
+# --------------
+
+eval "$(sheldon source)"
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
 
 # --------------
 # cdr関連の設定
@@ -44,9 +79,8 @@ setopt hist_expire_dups_first # 古い履歴を削除する必要がある場合
 setopt hist_expand # 補完時にヒストリを自動的に展開する
 setopt inc_append_history # 履歴をインクリメンタルに追加
 
-
 # cd in history
-fd() {
+find_project() {
     local res=$(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*")
     if [ -n "$res" ]; then
         BUFFER+="cd $(ghq root)/$res"
@@ -55,11 +89,11 @@ fd() {
         return 1
     fi
 }
-zle -N fd
-bindkey '^x^f' fd
+zle -N find_project
+bindkey '^x^f' find_project
 
 # fh - repeat history
-h() {
+repeat_history() {
     local res=$(([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g')
     if [ -n "$res" ]; then
         BUFFER+=$res
@@ -68,34 +102,5 @@ h() {
         return 1
     fi
 }
-zle -N h
-bindkey '^x^x' h
-
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/itome/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/completion.zsh.inc'; fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/itome/.pyenv/versions/anaconda3-2022.05/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/itome/.pyenv/versions/anaconda3-2022.05/etc/profile.d/conda.sh" ]; then
-        . "/Users/itome/.pyenv/versions/anaconda3-2022.05/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/itome/.pyenv/versions/anaconda3-2022.05/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+zle -N repeat_history
+bindkey '^x^x' repeat_history

@@ -14,7 +14,7 @@ function obj:init()
   self.sendKana = false
   self.lastModifiers = {}
 
-  local CANCEL_DELAY_SECONDS = 0.150
+  local CANCEL_DELAY_SECONDS = 2
   self.commandOptionKeyTimer = hs.timer.delayed.new(CANCEL_DELAY_SECONDS, function()
     self.sendEisuu = false
     self.sendKana = false
