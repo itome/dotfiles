@@ -14,7 +14,7 @@ function obj:init()
   self.sendKana = false
   self.lastModifiers = {}
 
-  local CANCEL_DELAY_SECONDS = 2
+  local CANCEL_DELAY_SECONDS = 0.5
   self.commandOptionKeyTimer = hs.timer.delayed.new(CANCEL_DELAY_SECONDS, function()
     self.sendEisuu = false
     self.sendKana = false
@@ -24,17 +24,7 @@ function obj:init()
     function(event)
       local keyCode = event:getKeyCode()
       local newModifiers = event:getFlags()
-      if not (self.lastModifiers['alt'] == newModifiers['alt']) then
-        if not self.lastModifiers['alt'] then
-          self.sendKana = true
-          self.commandOptionKeyTimer:start()
-        else
-          if self.sendKana then
-            hs.eventtap.keyStroke({}, kana, 0)
-          end
-        end
-        self.lastModifiers = newModifiers
-      elseif not (self.lastModifiers['cmd'] == newModifiers['cmd']) then
+      if not (self.lastModifiers['cmd'] == newModifiers['cmd']) then
         if not self.lastModifiers['cmd'] then
           if keyCode == leftCmd then
             self.sendEisuu = true

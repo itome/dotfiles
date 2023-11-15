@@ -36,6 +36,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
