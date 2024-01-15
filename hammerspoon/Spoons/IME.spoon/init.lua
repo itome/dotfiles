@@ -22,6 +22,11 @@ function obj:init()
 
   self.commandOptionTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged},
     function(event)
+      local keyboardType = event:getProperty(hs.eventtap.event.properties.keyboardEventKeyboardType)
+      if keyboardType == 40 then
+        return false
+      end
+
       local keyCode = event:getKeyCode()
       local newModifiers = event:getFlags()
       if not (self.lastModifiers['cmd'] == newModifiers['cmd']) then

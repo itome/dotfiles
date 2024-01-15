@@ -15,5 +15,7 @@ end
 -- For example, changing the color scheme:
 config.color_scheme = 'nord'
 
+config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Regular' })
+
 -- and finally, return the configuration to wezterm
 return config

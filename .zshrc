@@ -29,6 +29,7 @@ export PATH=$PATH:$HOME/.local/share/solana/install/active_release/bin
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 export PATH=$PATH:/opt/homebrew/opt/openjdk@11/bin
 export PATH=$PATH:$HOME/.bun/bin
+export PATH=$PATH:$HOME/Projects/chromium.googlesource.com/chromium/tools/depot_tools
 
 . "$HOME/.cargo/env"
 export GO111MODULE=on
