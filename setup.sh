@@ -16,7 +16,7 @@ ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/helix/config.toml ~/.config/helix/config.toml
 ln -sf ~/dotfiles/.wezterm.lua ~/.wezterm.lua
-ln -sf ~/dotfiles/.sheldon.yaml ~/.config/sheldon/config.yaml
+ln -sf ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
 
 if [ "$(uname)" == 'Darwin' ]; then
     ln -sf ~/dotfiles/.Brewfile ~/.Brewfile
