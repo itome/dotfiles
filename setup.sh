@@ -2,6 +2,8 @@
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/karabiner
 mkdir -p ~/.config/git
+mkdir -p ~/.config/sheldon
+mkdir -p ~/.config/helix
 ln -sf ~/dotfiles/gitignore ~/.config/git/ignore
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/.xvimrc ~/.xvimrc
