@@ -6,8 +6,7 @@ export PYENV_ROOT=$HOME/.pyenv
 export GOPATH=$HOME/go
 export WASMTIME_HOME=$HOME/.wasmtime
 export PATH=$PATH:$PYENV_ROOT/shims
-export PATH=$PATH:$HOME/flutter/bin
-export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
+export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -27,24 +26,26 @@ export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:$HOME/.con
 export PATH=$PATH:$HOME/.local/share/solana/install/active_release/bin
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
-export PATH=$PATH:/opt/homebrew/opt/openjdk@11/bin
 export PATH=$PATH:$HOME/.bun/bin
 export PATH=$PATH:$HOME/Projects/chromium.googlesource.com/chromium/tools/depot_tools
 export PATH=$PATH:$HOME/.config/emacs/bin
+export PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
+export PATH=$PATH:/opt/homebrew/opt/openjdk@17/bin
 
 . "$HOME/.cargo/env"
+. "$HOME/.rye/env"
 export GO111MODULE=on
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 export NVM_DIR=$HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
-if [ -f '/Users/itome/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/itome/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then . "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ]; then . "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"; fi
 
 [ -s "/Users/itome/.bun/_bun" ] && source "/Users/itome/.bun/_bun"
 # --------------
@@ -52,7 +53,6 @@ if [ -f '/Users/itome/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ito
 eval "$(sheldon source)"
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(pyenv init -)"
 eval "$(rbenv init - zsh)"
 
 # --------------
@@ -107,3 +107,24 @@ repeat_history() {
 }
 zle -N repeat_history
 bindkey '^x^x' repeat_history
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/itome/.dart-cli-completion/zsh-config.zsh ]] && . /Users/itome/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# moonbit
+export PATH="$HOME/.moon/bin:$PATH"
+
+export PATH=/Users/itome/.tiup/bin:$PATH
+
+if [ $ITERM_SESSION_ID ]; then
+precmd() {
+  echo -ne "\033]0;${PWD##*/}\007"
+}
+fi
+
+[ -f "/Users/itome/.ghcup/env" ] && . "/Users/itome/.ghcup/env" # ghcup-env

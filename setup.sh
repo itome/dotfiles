@@ -4,19 +4,21 @@ mkdir -p ~/.config/karabiner
 mkdir -p ~/.config/git
 mkdir -p ~/.config/sheldon
 mkdir -p ~/.config/helix
+mkdir -p ~/.config/lazygit
 ln -sf ~/dotfiles/gitignore ~/.config/git/ignore
 ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sf ~/dotfiles/.xvimrc ~/.xvimrc
 ln -sf ~/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sf ~/dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf ~/dotfiles/hammerspoon/ ~/.hammerspoon
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/helix/config.toml ~/.config/helix/config.toml
 ln -sf ~/dotfiles/.wezterm.lua ~/.wezterm.lua
 ln -sf ~/dotfiles/sheldon/plugins.toml ~/.config/sheldon/plugins.toml
+ln -sf ~/dotfiles/lazygit/config.yml ~/Library/Application Support/lazygit/config.yml
 
 if [ "$(uname)" == 'Darwin' ]; then
     ln -sf ~/dotfiles/.Brewfile ~/.Brewfile

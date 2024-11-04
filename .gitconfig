@@ -6,7 +6,7 @@
     quotepath = false
     safecrlf = true
 	autocrlf = false
-    editor = nvim
+	editor = nvim
 [ghq]
     root = ~/Projects
 [pull]

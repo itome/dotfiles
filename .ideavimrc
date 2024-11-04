@@ -55,3 +55,4 @@ noremap <Space><f1> :action ToggleFullScreen<CR>
 noremap <Space>; :action ToggleLineBreakpoint<CR>
 
 noremap <Space><tab> :action GoToLastTab<CR>
+set clipboard^=ideaput
