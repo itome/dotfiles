@@ -31,17 +31,26 @@ export PATH=$PATH:$HOME/Projects/chromium.googlesource.com/chromium/tools/depot_
 export PATH=$PATH:$HOME/.config/emacs/bin
 export PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin
 export PATH=$PATH:/opt/homebrew/opt/openjdk@17/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.moon/bin
+export PATH=$PATH:/Users/itome/.tiup/bin
+export PATH=$PATH:/Users/itome/.pesde/bin
 
 . "$HOME/.cargo/env"
-. "$HOME/.rye/env"
 export GO111MODULE=on
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
-
 export NVM_DIR=$HOME/.nvm
+
+eval "$(sheldon source)"
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+eval "$(rbenv init - zsh)"
+
+[ -f "/Users/itome/.ghcup/env" ] && . "/Users/itome/.ghcup/env" # ghcup-env
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
 if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then . "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"; fi
@@ -49,11 +58,6 @@ if [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ]; then . "
 
 [ -s "/Users/itome/.bun/_bun" ] && source "/Users/itome/.bun/_bun"
 # --------------
-
-eval "$(sheldon source)"
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(rbenv init - zsh)"
 
 # --------------
 # cdr関連の設定
@@ -113,18 +117,19 @@ bindkey '^x^x' repeat_history
 [[ -f /Users/itome/.dart-cli-completion/zsh-config.zsh ]] && . /Users/itome/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-
-# moonbit
-export PATH="$HOME/.moon/bin:$PATH"
-
-export PATH=/Users/itome/.tiup/bin:$PATH
-
 if [ $ITERM_SESSION_ID ]; then
 precmd() {
   echo -ne "\033]0;${PWD##*/}\007"
 }
 fi
 
-[ -f "/Users/itome/.ghcup/env" ] && . "/Users/itome/.ghcup/env" # ghcup-env
+# FVM
+export PATH="/Users/itome/.fvm_flutter/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/itome/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
